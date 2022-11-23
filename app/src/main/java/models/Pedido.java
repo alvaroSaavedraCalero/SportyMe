@@ -6,7 +6,7 @@ public class Pedido {
 
     private ArrayList<ItemPedido> itemsPedido;
     private double subtotal;
-    private double gastosDeEnvio;
+    private double gastosDeEnvio=0;
     private double total;
 
     public Pedido(){
@@ -23,14 +23,14 @@ public class Pedido {
 
     public double getGastosDeEnvio() {
         return gastosDeEnvio;
-    }
+    };
 
     public void setGastosDeEnvio(double gastosDeEnvio) {
         this.gastosDeEnvio = gastosDeEnvio;
     }
 
     public double getTotal() {
-        return total;
+        return this.subtotal+this.gastosDeEnvio;
     }
 
     public void setTotal(double total) {
