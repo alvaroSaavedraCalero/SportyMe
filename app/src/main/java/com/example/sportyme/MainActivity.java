@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
         String cositas="Hola buenos días. Aqui probando las movidiñas.";
 
+        String cositasSaavedrita = "Hola buenas añado otra string";
+
 
 
     }
