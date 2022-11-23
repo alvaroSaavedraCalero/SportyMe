@@ -20,4 +20,14 @@
     <string name="poblacion">Poblacion</string>
     <string name="comunidad">Comunidad</string>
     <string name="realizarRegistro">Realizar Registro</string>
+
+    <!-- String para la vista principal -->
+    <string name="botonComprar">Realizar Compra</string>
+    <string name="botonAniadir">+</string>
+    <string name="cantidadArticulos">0</string>
+    <string name="descripcionArticulo">Descripción</string>
+    <string name="descripcionImagenFila1">Imagen 1</string>
+    <string name="descripcionImagenFila2">Imagen 2</string>
+    <string name="descripcionImagenFila3">Imagen 3</string>
+    <string name="descripcionImagenFila4">Imagen 4</string>
 </resources>
