@@ -7,4 +7,17 @@
     <string name="password">Contraseña</string>
     <string name="botonLogin">Log in</string>
     <string name="botonRegistro">Registrarse</string>
+
+    <!-- Strings para la vista registro -->
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="usuarioRegistro">Usuario</string>
+    <string name="passwordRegistro">Contraseña</string>
+    <string name="repeatpassword">Repite contraseña</string>
+    <string name="correo">Correo electrónico</string>
+    <string name="calle">Calle</string>
+    <string name="cp">Código Postal</string>
+    <string name="poblacion">Poblacion</string>
+    <string name="comunidad">Comunidad</string>
+    <string name="realizarRegistro">Realizar Registro</string>
 </resources>
