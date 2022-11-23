@@ -7,11 +7,13 @@ public class User {
     // propiedades de clase
     private String username;
     private String password;
+    private Pedido pedidoActual;
 
     // constructores
-    public User(String username, String password) {
+    public User(String username, String password, Pedido pedidoActual) {
         this.username = username;
         this.password = password;
+        this.pedidoActual=pedidoActual;
     }
 
     public User(String username) {
@@ -36,6 +38,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Pedido getPedidoActual(){return pedidoActual;}
+
+    public void setPedidoActual(Pedido pedidoActual){this.pedidoActual=pedidoActual;}
 
     // equals, hashcode y toString
 
