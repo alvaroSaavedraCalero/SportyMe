@@ -1,8 +1,9 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
 
     // propiedades de clase
     private String username;
@@ -16,7 +17,7 @@ public class User {
     // constructores
 
 
-    public User(String username, String password, String nombre, String apellidos, String correo, Pedido pedidoActual, Direccion direccionEnvio) {
+    public User(String username, String password, String nombre, String apellidos, String correo, Direccion direccionEnvio) {
         this.username = username;
         this.password = password;
         this.nombre = nombre;
@@ -72,27 +73,5 @@ public class User {
             new Direccion(direccionEnvio.getCalle(), direccionEnvio.getCP(), direccionEnvio.getProvincia(),
                     direccionEnvio.getLocalidad()); }
 
-    // equals, hashcode y toString
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getUsername(), getPassword());
-    }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }
