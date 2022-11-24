@@ -24,13 +24,11 @@
     <!-- String para la vista principal -->
     <string name="botonComprar">Realizar Compra</string>
     <string name="botonAniadir">+</string>
+    <string name="botonQuitar">-</string>
     <string name="cantidadArticulos">0</string>
     <string name="descripcionArticulo">Descripción</string>
-    <string name="descripcionImagenFila1">Imagen 1</string>
-    <string name="descripcionImagenFila2">Imagen 2</string>
-    <string name="descripcionImagenFila3">Imagen 3</string>
-    <string name="descripcionImagenFila4">Imagen 4</string>
 
-    <!--String para la información de la vista -->
-    <string name="camiseta1">Camiseta 1 to guapa de locos que cuesta dinero</string>
+
+    <!--String para la información de la vista principal -->
+    <string name="descripcionImagen">Descripcion imagen</string>
 </resources>
