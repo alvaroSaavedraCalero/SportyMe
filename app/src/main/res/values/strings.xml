@@ -30,4 +30,7 @@
     <string name="descripcionImagenFila2">Imagen 2</string>
     <string name="descripcionImagenFila3">Imagen 3</string>
     <string name="descripcionImagenFila4">Imagen 4</string>
+
+    <!--String para la información de la vista -->
+    <string name="camiseta1">Camiseta 1 to guapa de locos que cuesta dinero</string>
 </resources>
