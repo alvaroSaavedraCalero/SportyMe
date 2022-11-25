@@ -29,6 +29,7 @@
     <string name="descripcionArticulo">Descripción</string>
     <string name="textoDescripcion">Descripcion de la prenda</string>
     <string name="botonRealizarCompra">Realizar Compra</string>
+    <string name="tallas">Tallas</string>
 
     <!-- Strings del menu de la vista principal -->
     <string name="filtradoCamisetas">Filtrar por camisetas</string>
