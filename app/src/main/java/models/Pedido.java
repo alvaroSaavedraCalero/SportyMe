@@ -1,8 +1,9 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pedido {
+public class Pedido implements Serializable {
 
     private ArrayList<ItemPedido> itemsPedido;
     private double subtotal;

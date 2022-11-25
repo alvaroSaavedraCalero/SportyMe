@@ -52,8 +52,11 @@ public class LoginActivity extends AppCompatActivity {
                             textoPassword.getText().toString());
                     Toast.makeText(getApplicationContext(), "Las credenciales son correctas", Toast.LENGTH_SHORT).show();
                     intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+
                     intent.putExtra("usuario", s);
                     intent.putExtra("almacen", almacen);
+
+
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else {
