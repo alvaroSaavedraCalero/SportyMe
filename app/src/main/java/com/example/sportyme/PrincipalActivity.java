@@ -20,11 +20,44 @@ public class PrincipalActivity extends AppCompatActivity {
     private User usuarioConectado;
     TableLayout tabla;
 
+    ImageButton camiseta1;
+    ImageButton camiseta2;
+    ImageButton camiseta3;
+
+    ImageButton pantalon1;
+    ImageButton pantalon2;
+    ImageButton pantalon3;
+
+    ImageButton sudadera1;
+    ImageButton sudadera2;
+    ImageButton sudadera3;
+
+    ImageButton zapatillas1;
+    ImageButton zapatillas2;
+    ImageButton zapatillas3;
+
+    ImageButton[] prendas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
+        camiseta1 = findViewById(R.id.imageButtonCamiseta1);
+        camiseta2 = findViewById(R.id.imageButtonCamiseta2);
+        camiseta3 = findViewById(R.id.imageButtonCamiseta3);
+
+        pantalon1 = findViewById(R.id.imageButtonPantalon1);
+        pantalon2 = findViewById(R.id.imageButtonPantalon2);
+        pantalon3 = findViewById(R.id.imageButtonPantalon3);
+
+        sudadera1 = findViewById(R.id.imageButtonSudadera1);
+        sudadera2 = findViewById(R.id.imageButtonSudadera2);
+        sudadera3 = findViewById(R.id.imageButtonSudadera3);
+
+        zapatillas1 = findViewById(R.id.imageButtonZapatillas1);
+        zapatillas2 = findViewById(R.id.imageButtonZapatillas2);
+        zapatillas3 = findViewById(R.id.imageButtonZapatillas3);
 
         // Obtenemos el usuario que se ha conectado
         intent = getIntent();
