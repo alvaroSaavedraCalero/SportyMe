@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".PrincipalActivity">
+
+    <item android:id="@+id/FiltradoXCamisetas"
+        android:title="@string/filtradoCamisetas" />
+
+    <item android:id="@+id/FiltradoXPantalones"
+        android:title="@string/filtradoPantalones" />
+
+    <item android:id="@+id/FiltradoXSudaderas"
+        android:title="@string/filtradoSudaderas" />
+
+    <item android:id="@+id/FiltradoXZapatillas"
+        android:title="@string/filtradoZapatillas" />
+
+    <item android:id="@+id/Perfil"
+        android:title="@string/perfil" />
+
+    <item android:id="@+id/logOut"
+        android:title="@string/logOut" />
+
+</menu>

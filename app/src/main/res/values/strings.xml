@@ -30,6 +30,14 @@
     <string name="textoDescripcion">Descripcion de la prenda</string>
     <string name="botonRealizarCompra">Realizar Compra</string>
 
+    <!-- Strings del menu de la vista principal -->
+    <string name="filtradoCamisetas">Filtrar por camisetas</string>
+    <string name="filtradoPantalones">Filtrar por pantalones</string>
+    <string name="filtradoSudaderas">Filtrar por sudaderas</string>
+    <string name="filtradoZapatillas">Filtrar por zapatillas</string>
+    <string name="perfil">Perfil</string>
+    <string name="logOut">Desconectarse</string>
+
     <!--String para la información de la vista principal -->
     <string name="descripcionImagen">Descripcion imagen</string>
 

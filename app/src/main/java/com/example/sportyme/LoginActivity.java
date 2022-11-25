@@ -51,7 +51,8 @@ public class LoginActivity extends AppCompatActivity {
                     User s = Almacen.comprobarCredencialesLogin(textoUser.getText().toString(),
                             textoPassword.getText().toString());
                     Toast.makeText(getApplicationContext(), "Las credenciales son correctas", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+                    intent = getIntent();
+                    intent.setClass(getApplicationContext(), PrincipalActivity.class);
 
                     intent.putExtra("usuario", s);
                     intent.putExtra("almacen", almacen);
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Registrese si no lo ha hecho", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Las credenciales NO son correctas.\nRegistrese si no lo ha hecho", Toast.LENGTH_SHORT).show();
                 }
             }
         });
