@@ -21,14 +21,19 @@
     <string name="comunidad">Comunidad</string>
     <string name="realizarRegistro">Realizar Registro</string>
 
-    <!-- String para la vista principal -->
+    <!-- String para la vista principal / mostrar_articulo -->
     <string name="botonComprar">Realizar Compra</string>
     <string name="botonAniadir">+</string>
     <string name="botonQuitar">-</string>
     <string name="cantidadArticulos">0</string>
     <string name="descripcionArticulo">Descripción</string>
-
+    <string name="textoDescripcion">Descripcion de la prenda</string>
+    <string name="botonRealizarCompra">Realizar Compra</string>
 
     <!--String para la información de la vista principal -->
     <string name="descripcionImagen">Descripcion imagen</string>
+
+
+
+
 </resources>

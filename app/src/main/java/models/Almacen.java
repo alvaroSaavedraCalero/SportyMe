@@ -1,15 +1,15 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Almacen {
+public class Almacen implements Serializable {
 
-    private static ArrayList<User> almacenUsuarios;
+    private static ArrayList<User> almacenUsuarios = new ArrayList<>();
 
     public Almacen() {
 
-        almacenUsuarios = new ArrayList<>();
 
         Direccion direccionPepe = new Direccion("calle geranios nº1", "28845", "Torredolones", "Madrid");
         User usuarioPepe = new User("pepe01", "1234pepe", "Pepe", "Contretas Cava", "pepe01@mail.com", direccionPepe);
@@ -38,13 +38,16 @@ public class Almacen {
     public static User comprobarCredencialesLogin(String user, String pass) {
         boolean continuar = true;
         User retorno = null;
-        Iterator<User> userIterator = almacenUsuarios.iterator();
-        while (userIterator.hasNext() && continuar) {
-            User s = userIterator.next();
-            if (s.getUsername().equals(user) && s.getPassword().equals(pass)) {
-                retorno = s;
-                continuar = false;
-            }
+        int i = 0;
+
+        while (i < almacenUsuarios.size() && continuar) {
+           if (almacenUsuarios.get(i).getUsername().equals(user) &&
+           almacenUsuarios.get(i).getPassword().equals(pass)) {
+               retorno = almacenUsuarios.get(i);
+               continuar = false;
+           } else {
+               i++;
+           }
         }
         return retorno;
     }
