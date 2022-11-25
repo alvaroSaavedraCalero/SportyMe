@@ -7,10 +7,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import models.User;
 
@@ -58,6 +62,22 @@ public class PrincipalActivity extends AppCompatActivity {
         zapatillas1 = findViewById(R.id.imageButtonZapatillas1);
         zapatillas2 = findViewById(R.id.imageButtonZapatillas2);
         zapatillas3 = findViewById(R.id.imageButtonZapatillas3);
+
+        prendas = new ImageButton[] {camiseta1, camiseta2, camiseta3, pantalon1, pantalon2, pantalon3,
+        sudadera1, sudadera2, sudadera3, zapatillas1, zapatillas2, zapatillas3};
+
+        for(ImageButton i : prendas) {
+            i.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent.setClass(getApplicationContext(), MostrarArticuloActivity.class);
+                    intent.putExtra("idImagen", i.getId());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
+        }
+
 
         // Obtenemos el usuario que se ha conectado
         intent = getIntent();
