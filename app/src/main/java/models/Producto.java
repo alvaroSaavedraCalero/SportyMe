@@ -4,19 +4,25 @@ import java.util.ArrayList;
 
 public class Producto {
 
+    private String idFoto;
     private String nombreProducto;
     private String descripcion;
     private double precio;
     private String[] tallaPosible;
     private String categoria;
 
-    public Producto(String nombreProducto, String descripcion, double precio, String[] tallaPosible,String categoria) {
+    public Producto(String idFoto, String nombreProducto, String descripcion, double precio, String[] tallaPosible,String categoria) {
+        this.idFoto=idFoto;
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.precio = precio;
         this.tallaPosible = tallaPosible;
         this.categoria=categoria;
     }
+
+    public String getIdFoto() {return idFoto;}
+
+    public void setIdFoto(String idFoto) {this.idFoto = idFoto;}
 
     public String getNombreProducto() {
         return nombreProducto;
