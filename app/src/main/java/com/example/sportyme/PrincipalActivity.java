@@ -3,6 +3,7 @@ package com.example.sportyme;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -10,26 +11,27 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import models.Almacen;
 import models.User;
 
 public class PrincipalActivity extends AppCompatActivity {
 
     private Intent intent;
 
-    private ImageButton camiseta1;
-    private ImageButton camiseta2;
-    private ImageButton camiseta3;
-    private ImageButton pantalon1;
-    private ImageButton pantalon2;
-    private ImageButton pantalon3;
-    private ImageButton sudadera1;
-    private ImageButton sudadera2;
-    private ImageButton sudadera3;
-    private ImageButton zapas1;
-    private ImageButton zapas2;
-    private ImageButton zapas3;
+    private ImageButton camiseta01;
+    private ImageButton camiseta02;
+    private ImageButton camiseta03;
+    private ImageButton pantalon01;
+    private ImageButton pantalon02;
+    private ImageButton pantalon03;
+    private ImageButton sudadera01;
+    private ImageButton sudadera02;
+    private ImageButton sudadera03;
+    private ImageButton zapas01;
+    private ImageButton zapas02;
+    private ImageButton zapas03;
 
-    private ArrayList<ImageButton>fotos;
+    private ArrayList<ImageButton>fotos=new ArrayList<ImageButton>();
 
 
     @Override
@@ -41,42 +43,48 @@ public class PrincipalActivity extends AppCompatActivity {
         User s = (User) intent.getSerializableExtra("usuario");
         Toast.makeText(getApplicationContext(), "Estoy en la vista principal con el usuario" +
                s.getUsername() , Toast.LENGTH_SHORT).show();
+        Almacen almacen = (Almacen) intent.getSerializableExtra("almacen");
+
+        camiseta01=(ImageButton)findViewById(R.id.camiseta1);
+        camiseta02=(ImageButton)findViewById(R.id.camiseta2);
+        camiseta03=(ImageButton)findViewById(R.id.camiseta3);
+        pantalon01=(ImageButton)findViewById(R.id.pantalon1);
+        pantalon02=(ImageButton)findViewById(R.id.pantalon2);
+        pantalon03=(ImageButton)findViewById(R.id.pantalon3);
+        sudadera01=(ImageButton)findViewById(R.id.sudadera1);
+        sudadera02=(ImageButton)findViewById(R.id.sudadera2);
+        sudadera03=(ImageButton)findViewById(R.id.sudadera3);
+        zapas01=(ImageButton)findViewById(R.id.zapatillas1);
+        zapas02=(ImageButton)findViewById(R.id.zapatillas2);
+        zapas03=(ImageButton)findViewById(R.id.zapatillas3);
+
+        fotos.add(camiseta01);
+        fotos.add(camiseta02);
+        fotos.add(camiseta03);
+        fotos.add(pantalon01);
+        fotos.add(pantalon02);
+        fotos.add(pantalon03);
+        fotos.add(sudadera01);
+        fotos.add(sudadera02);
+        fotos.add(sudadera03);
+        fotos.add(zapas01);
+        fotos.add(zapas02);
+        fotos.add(zapas03);
 
 
-        camiseta1=(ImageButton)findViewById(R.id.camiseta1);
-        camiseta2=(ImageButton)findViewById(R.id.camiseta2);
-        camiseta3=(ImageButton)findViewById(R.id.camiseta3);
-        pantalon1=(ImageButton)findViewById(R.id.pantalon1);
-        pantalon2=(ImageButton)findViewById(R.id.pantalon2);
-        pantalon3=(ImageButton)findViewById(R.id.pantalon3);
-        sudadera1=(ImageButton)findViewById(R.id.sudadera1);
-        sudadera2=(ImageButton)findViewById(R.id.sudadera2);
-        sudadera3=(ImageButton)findViewById(R.id.sudadera3);
-        zapas1=(ImageButton)findViewById(R.id.zapas1);
-        zapas2=(ImageButton)findViewById(R.id.zapas2);
-        zapas3=(ImageButton)findViewById(R.id.zapas3);
-
-        fotos.add(camiseta1);
-        fotos.add(camiseta2);
-        fotos.add(camiseta3);
-        fotos.add(pantalon1);
-        fotos.add(pantalon2);
-        fotos.add(pantalon3);
-        fotos.add(sudadera1);
-        fotos.add(sudadera2);
-        fotos.add(sudadera3);
-        fotos.add(zapas1);
-        fotos.add(zapas2);
-        fotos.add(zapas3);
-
-
-        for(ImageButton foto:fotos){
+       for(ImageButton foto:fotos){
             foto.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View view) {
 
+                    String idFoto=foto.getContentDescription().toString();
 
+                    Intent descripFoto=new Intent(PrincipalActivity.this,MostrarArticuloActivity.class);
+                    intent.putExtra("nombrefoto",idFoto);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+                    startActivity(descripFoto);
 
                 }
             });

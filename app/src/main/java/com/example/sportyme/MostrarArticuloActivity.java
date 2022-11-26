@@ -4,10 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MostrarArticuloActivity extends AppCompatActivity {
 
     private Intent intent;
+
+    private ImageView foto;
+    private TextView descripción;
+    private Button disminuir;
+    private Button aumentar;
+    private TextView cantidad;
+    private Spinner tallaje;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +28,10 @@ public class MostrarArticuloActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-        int idPrenda = intent.getIntExtra("idImagen", 0);
+
+
+
+
 
     }
 }

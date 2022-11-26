@@ -71,14 +71,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewTallas"
-        android:layout_width="377dp"
-        android:layout_height="68dp"
-        android:text="@string/tallas"
-        android:textColor="@color/white"
+    <Spinner
+        android:id="@+id/Tallaje"
+        android:layout_width="142dp"
+        android:layout_height="48dp"
         app:layout_constraintBottom_toTopOf="@+id/cantidadMostrarArticulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripcionMostrarArticulo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="62dp"
+        android:layout_height="27dp"
+        android:text="TALLAS"
+        app:layout_constraintBottom_toTopOf="@+id/Tallaje"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descripcionMostrarArticulo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,7 +42,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="camiseta1"
                 app:srcCompat="@drawable/camiseta1"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
@@ -52,7 +52,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="camiseta2"
                 app:srcCompat="@drawable/camiseta2" />
 
             <ImageButton
@@ -61,7 +61,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="camiseta3"
                 app:srcCompat="@drawable/camiseta3" />
         </TableRow>
 
@@ -75,7 +75,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="pantalon1"
                 app:srcCompat="@drawable/pantalon1" />
 
             <ImageButton
@@ -84,7 +84,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="pantalon2"
                 app:srcCompat="@drawable/pantalon2" />
 
             <ImageButton
@@ -93,7 +93,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="pantalon3"
                 app:srcCompat="@drawable/pantalon3" />
         </TableRow>
 
@@ -107,7 +107,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="sudadera1"
                 app:srcCompat="@drawable/sudadera1" />
 
             <ImageButton
@@ -116,7 +116,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="sudadera2"
                 app:srcCompat="@drawable/sudadera2" />
 
             <ImageButton
@@ -125,7 +125,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="sudadera3"
                 app:srcCompat="@drawable/sudadera3" />
         </TableRow>
 
@@ -135,29 +135,29 @@
             android:gravity="center_horizontal">
 
             <ImageButton
-                android:id="@+id/zapas1"
+                android:id="@+id/zapatillas1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="zapatillas1"
                 app:srcCompat="@drawable/zapatillas1" />
 
             <ImageButton
-                android:id="@+id/zapas2"
+                android:id="@+id/zapatillas2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="zapatillas2"
                 app:srcCompat="@drawable/zapatillas2" />
 
             <ImageButton
-                android:id="@+id/zapas3"
+                android:id="@+id/zapatillas3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="@string/descripcionImagen"
+                android:contentDescription="zapatillas3"
                 app:srcCompat="@drawable/zapatillas3" />
         </TableRow>
 

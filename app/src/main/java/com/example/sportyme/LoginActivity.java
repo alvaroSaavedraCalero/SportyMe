@@ -56,9 +56,9 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("usuario", s);
                     intent.putExtra("almacen", almacen);
 
-
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Registrese si no lo ha hecho", Toast.LENGTH_SHORT).show();
                 }

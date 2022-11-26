@@ -1,8 +1,9 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Producto {
+public class Producto implements Serializable {
 
     private String idFoto;
     private String nombreProducto;
