@@ -4,201 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.Toast;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import models.User;
 
 public class PrincipalActivity extends AppCompatActivity {
 
     private Intent intent;
-    private User usuarioConectado;
-    TableLayout tabla;
-
-    ImageButton camiseta1;
-    ImageButton camiseta2;
-    ImageButton camiseta3;
-
-    ImageButton pantalon1;
-    ImageButton pantalon2;
-    ImageButton pantalon3;
-
-    ImageButton sudadera1;
-    ImageButton sudadera2;
-    ImageButton sudadera3;
-
-    ImageButton zapatillas1;
-    ImageButton zapatillas2;
-    ImageButton zapatillas3;
-
-    ImageButton[] prendas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        intent=getIntent();
 
-        camiseta1 = findViewById(R.id.imageButtonCamiseta1);
-        camiseta2 = findViewById(R.id.imageButtonCamiseta2);
-        camiseta3 = findViewById(R.id.imageButtonCamiseta3);
-
-        pantalon1 = findViewById(R.id.imageButtonPantalon1);
-        pantalon2 = findViewById(R.id.imageButtonPantalon2);
-        pantalon3 = findViewById(R.id.imageButtonPantalon3);
-
-        sudadera1 = findViewById(R.id.imageButtonSudadera1);
-        sudadera2 = findViewById(R.id.imageButtonSudadera2);
-        sudadera3 = findViewById(R.id.imageButtonSudadera3);
-
-        zapatillas1 = findViewById(R.id.imageButtonZapatillas1);
-        zapatillas2 = findViewById(R.id.imageButtonZapatillas2);
-        zapatillas3 = findViewById(R.id.imageButtonZapatillas3);
-
-        prendas = new ImageButton[] {camiseta1, camiseta2, camiseta3, pantalon1, pantalon2, pantalon3,
-        sudadera1, sudadera2, sudadera3, zapatillas1, zapatillas2, zapatillas3};
-
-        for(ImageButton i : prendas) {
-            i.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    intent.setClass(getApplicationContext(), MostrarArticuloActivity.class);
-                    intent.putExtra("idImagen", i.getId());
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
-            });
-        }
-
-
-        // Obtenemos el usuario que se ha conectado
-        intent = getIntent();
-        usuarioConectado = (User) intent.getSerializableExtra("usuario");
-        Toast.makeText(getApplicationContext(), "Estoy en la vista principal con el usuario " +
-                usuarioConectado.getUsername(), Toast.LENGTH_SHORT).show();
-    }
-
-
-    // Añadimos el menu a la vista
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_vista_principal, menu);
-        return true;
-    }
-
-    // Lo que vamos a hacer con cada opcion
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.FiltradoXCamisetas:
-                // llamamos a una funcion para mostar solamente las camisetas
-                mostrarPorFiltrado("Camisetas");
-                return true;
-
-            case R.id.FiltradoXPantalones:
-                // llamamos a una funcion para mostrar solamente los pantalones
-                mostrarPorFiltrado("Pantalones");
-                return true;
-
-            case R.id.FiltradoXSudaderas:
-                // llamamos a una funcion para mostrar solamente las sudaderas
-                mostrarPorFiltrado("Sudaderas");
-                return true;
-
-            case R.id.FiltradoXZapatillas:
-                // llamamos a una funcion para mostrar solamente las zapatillas
-                mostrarPorFiltrado("Zapatillas");
-                return true;
-
-            case R.id.Perfil:
-                // nos vamos a la vista del perfil
-                return true;
-
-            case R.id.logOut:
-                // nos vamos a la vista login y eliminamos del intent los datos
-                intent.removeExtra("usuario");
-                intent.setClass(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                return true;
-
-            default:
-                Toast.makeText(getApplicationContext(), "No se ha podido realizar el filtrado", Toast.LENGTH_SHORT).show();
-                return false;
-        }
-    }
-
-
-    public void mostrarPorFiltrado(String filtrado) {
-
-        tabla = findViewById(R.id.tableLayoutPrincipal);
-        TableRow filaCamisetas = findViewById(R.id.fila1Camisetas);
-        TableRow filaPantalones = findViewById(R.id.fila2Pantalones);
-        TableRow filaSudaderas = findViewById(R.id.fila3Sudaderas);
-        TableRow filaZapatillas = findViewById(R.id.fila4Zapatillas);
-
-        TableRow[] arrayFilas = {filaCamisetas, filaPantalones, filaSudaderas, filaZapatillas};
-
-        switch (filtrado) {
-            case "Camisetas":
-                if (tabla.getChildCount() <= 1) {
-                    for (TableRow t : arrayFilas) {
-                        tabla.addView(t);
-                    }
-                }
-                filaPantalones.removeAllViewsInLayout();
-                filaSudaderas.removeAllViewsInLayout();
-                filaZapatillas.removeAllViewsInLayout();
-
-                break;
-
-            case "Pantalones":
-                if (tabla.getChildCount() <= 1) {
-                    for (TableRow t : arrayFilas) {
-                        tabla.addView(t);
-                    }
-
-                }
-                filaCamisetas.removeAllViewsInLayout();
-                filaSudaderas.removeAllViewsInLayout();
-                filaZapatillas.removeAllViewsInLayout();
-
-                break;
-
-            case "Sudaderas":
-                if (tabla.getChildCount() <= 1) {
-                    for (TableRow t : arrayFilas) {
-                        tabla.addView(t);
-                    }
-                }
-                filaPantalones.removeAllViewsInLayout();
-                filaCamisetas.removeAllViewsInLayout();
-                filaZapatillas.removeAllViewsInLayout();
-
-                break;
-
-            case "Zapatillas":
-                if (tabla.getChildCount() <= 1) {
-                    for (TableRow t : arrayFilas) {
-                        tabla.addView(t);
-                    }
-                }
-                filaCamisetas.removeAllViewsInLayout();
-                filaSudaderas.removeAllViewsInLayout();
-                filaPantalones.removeAllViewsInLayout();
-
-                break;
-        }
-
+        User s = (User) intent.getSerializableExtra("usuario");
+        Toast.makeText(getApplicationContext(), "Estoy en la vista principal con el usuario" +
+               s.getUsername() , Toast.LENGTH_SHORT).show();
 
     }
 }
