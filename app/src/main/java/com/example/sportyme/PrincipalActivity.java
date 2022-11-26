@@ -82,6 +82,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
                     Intent descripFoto=new Intent(PrincipalActivity.this,MostrarArticuloActivity.class);
                     intent.putExtra("nombrefoto",idFoto);
+                    intent.putExtra("almacen", almacen);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     startActivity(descripFoto);

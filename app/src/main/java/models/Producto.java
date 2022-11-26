@@ -9,16 +9,32 @@ public class Producto implements Serializable {
     private String nombreProducto;
     private String descripcion;
     private double precio;
-    private String[] tallaPosible;
     private String categoria;
+    private String tallaEscogida;
+    private int cantidad;
 
-    public Producto(String idFoto, String nombreProducto, String descripcion, double precio, String[] tallaPosible,String categoria) {
+    public Producto(String idFoto, String nombreProducto, String descripcion, double precio,String categoria) {
         this.idFoto=idFoto;
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.tallaPosible = tallaPosible;
         this.categoria=categoria;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getTallaEscogida() {
+        return tallaEscogida;
+    }
+
+    public void setTallaEscogida(String tallaEscogida) {
+        this.tallaEscogida = tallaEscogida;
     }
 
     public String getIdFoto() {return idFoto;}
@@ -49,13 +65,6 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
-    public String[] getTallaPosible() {
-        return tallaPosible;
-    }
-
-    public void setTallaPosible(String[] tallaPosible) {
-        this.tallaPosible = tallaPosible;
-    }
 
     public String getCategoria() {
         return categoria;
