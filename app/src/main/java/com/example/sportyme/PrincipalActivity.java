@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -33,6 +34,9 @@ public class PrincipalActivity extends AppCompatActivity {
     private ImageButton zapas01;
     private ImageButton zapas02;
     private ImageButton zapas03;
+
+    private Button botonCompra;
+
 
     private ArrayList<ImageButton>fotos=new ArrayList<ImageButton>();
 
@@ -61,6 +65,8 @@ public class PrincipalActivity extends AppCompatActivity {
         zapas02=(ImageButton)findViewById(R.id.zapatillas2);
         zapas03=(ImageButton)findViewById(R.id.zapatillas3);
 
+        botonCompra = (Button) findViewById(R.id.botonRealizarCompra);
+
         fotos.add(camiseta01);
         fotos.add(camiseta02);
         fotos.add(camiseta03);
@@ -84,9 +90,9 @@ public class PrincipalActivity extends AppCompatActivity {
                     String idFoto=foto.getContentDescription().toString();
 
                     Intent descripFoto=new Intent(PrincipalActivity.this,MostrarArticuloActivity.class);
-                    intent.putExtra("prenda", Almacen.recuperarProducto(idFoto));
                     intent.putExtra("nombreFoto",idFoto);
                     intent.putExtra("almacen", almacen);
+                    intent.putExtra("usuario", s);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     startActivity(descripFoto);
@@ -95,7 +101,15 @@ public class PrincipalActivity extends AppCompatActivity {
             });
         }
 
-
+        botonCompra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(), CarritoActivity.class);
+                intent.putExtra("usuario", s);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
 
     }
 

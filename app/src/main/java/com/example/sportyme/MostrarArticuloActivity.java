@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import models.Almacen;
 import models.ItemPedido;
+import models.Pedido;
 import models.Producto;
+import models.User;
 
 public class MostrarArticuloActivity extends AppCompatActivity {
 
@@ -39,9 +41,8 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mostrar_articulo);
 
         intent = getIntent();
-        //idFoto = intent.getStringExtra("nombreFoto");
-        Producto p = (Producto) intent.getSerializableExtra("prenda");
-        idFoto = p.getIdFoto();
+        idFoto = intent.getStringExtra("nombreFoto");
+        User s = (User) intent.getSerializableExtra("usuario");
 
         almacen = (Almacen) intent.getSerializableExtra("almacen");
 
@@ -99,7 +100,10 @@ public class MostrarArticuloActivity extends AppCompatActivity {
                     ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idFoto), cantidadActual);
                     Almacen.getAlmacenPedidos().get(idFoto).getItemsPedido().add(item);
                 } else {
-                    Toast.makeText(getApplicationContext(), "No se ha podido añadir le producto al carrito", Toast.LENGTH_SHORT).show();
+                    Pedido p = new Pedido();
+                    ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idFoto), cantidadActual);
+                    p.getItemsPedido().add(item);
+                    Almacen.getAlmacenPedidos().put(s.getUsername(), p);
                 }
 
                 Toast.makeText(getApplicationContext(), "Se han añadido " + cantidadActual + " items de este producto al carrito", Toast.LENGTH_SHORT).show();
@@ -110,7 +114,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
     }
 
 
-    public int devuelveDrawableFoto(String id) {
+    public static int devuelveDrawableFoto(String id) {
         switch (id) {
             case "camiseta1":
                 return R.drawable.camiseta1;
