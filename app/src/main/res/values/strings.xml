@@ -42,5 +42,7 @@
     <!--String para la información de la vista principal -->
     <string name="descripcionImagen">Descripcion imagen</string>
 
+    <!-- String de la vista Carrito -->
+    <string name="realizarCompraCarrito">Realizar Compra</string>
 
 </resources>

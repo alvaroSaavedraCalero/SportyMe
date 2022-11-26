@@ -11,6 +11,5 @@ public class CarritoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito);
 
-        String s = "cambios";
     }
 }
