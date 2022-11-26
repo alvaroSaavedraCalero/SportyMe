@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -41,7 +44,7 @@ public class PrincipalActivity extends AppCompatActivity {
         intent=getIntent();
 
         User s = (User) intent.getSerializableExtra("usuario");
-        Toast.makeText(getApplicationContext(), "Estoy en la vista principal con el usuario" +
+        Toast.makeText(getApplicationContext(), "Estoy en la vista principal con el usuario " +
                s.getUsername() , Toast.LENGTH_SHORT).show();
         Almacen almacen = (Almacen) intent.getSerializableExtra("almacen");
 
@@ -81,7 +84,8 @@ public class PrincipalActivity extends AppCompatActivity {
                     String idFoto=foto.getContentDescription().toString();
 
                     Intent descripFoto=new Intent(PrincipalActivity.this,MostrarArticuloActivity.class);
-                    intent.putExtra("nombrefoto",idFoto);
+                    intent.putExtra("prenda", Almacen.recuperarProducto(idFoto));
+                    intent.putExtra("nombreFoto",idFoto);
                     intent.putExtra("almacen", almacen);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -93,5 +97,55 @@ public class PrincipalActivity extends AppCompatActivity {
 
 
 
+    }
+
+    // Añadimos el menu a la vista
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_vista_principal, menu);
+        return true;
+    }
+
+    // Lo que vamos a hacer con cada opcion
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.FiltradoXCamisetas:
+                // llamamos a una funcion para mostar solamente las camisetas
+                //mostrarPorFiltrado("Camisetas");
+                return true;
+
+            case R.id.FiltradoXPantalones:
+                // llamamos a una funcion para mostrar solamente los pantalones
+                //mostrarPorFiltrado("Pantalones");
+                return true;
+
+            case R.id.FiltradoXSudaderas:
+                // llamamos a una funcion para mostrar solamente las sudaderas
+                //mostrarPorFiltrado("Sudaderas");
+                return true;
+
+            case R.id.FiltradoXZapatillas:
+                // llamamos a una funcion para mostrar solamente las zapatillas
+                //mostrarPorFiltrado("Zapatillas");
+                return true;
+
+            case R.id.Perfil:
+                // nos vamos a la vista del perfil
+                return true;
+
+            case R.id.logOut:
+                // nos vamos a la vista login y eliminamos del intent los datos
+                intent.removeExtra("usuario");
+                intent.setClass(getApplicationContext(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+
+            default:
+                Toast.makeText(getApplicationContext(), "No se ha podido realizar el filtrado", Toast.LENGTH_SHORT).show();
+                return false;
+        }
     }
 }

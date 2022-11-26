@@ -13,13 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import models.Almacen;
+import models.ItemPedido;
 import models.Producto;
 
 public class MostrarArticuloActivity extends AppCompatActivity {
 
     private Intent intent;
+    private Bundle bundle;
     private Almacen almacen;
     private Producto productoActual;
+    private String idFoto;
 
     private ImageView foto;
     private TextView descripción;
@@ -35,6 +38,15 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_articulo);
 
+        intent = getIntent();
+        //idFoto = intent.getStringExtra("nombreFoto");
+        Producto p = (Producto) intent.getSerializableExtra("prenda");
+        idFoto = p.getIdFoto();
+
+        almacen = (Almacen) intent.getSerializableExtra("almacen");
+
+        Toast.makeText(getApplicationContext(), "Estas eligiendo el atriculo " + idFoto, Toast.LENGTH_SHORT).show();
+
         foto = (ImageView) findViewById(R.id.imagenMostrarArticulo);
         descripción = (TextView) findViewById(R.id.descripcionMostrarArticulo);
         disminuir = (Button) findViewById(R.id.botonQuitarMostrarArticulo);
@@ -44,9 +56,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         aniadirCarrito = (Button) findViewById(R.id.botonAniadirCarrito);
 
 
-        intent = getIntent();
-        String idFoto = intent.getStringExtra("nombrefoto");
-        almacen = (Almacen) intent.getSerializableExtra("almacen");
+
 
         productoActual = Almacen.recuperarProducto(idFoto);
 
@@ -55,7 +65,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
 
         productoActual.setTallaEscogida((String) tallaje.getSelectedItem());
 
-        // por algun motivo me obliga a añadirlo de esta forma
+
 
 
         disminuir.setOnClickListener(new View.OnClickListener() {
@@ -83,12 +93,16 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         aniadirCarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer cantidadActual = Integer.parseInt(cantidad.getText().toString());
+                int cantidadActual = Integer.parseInt(cantidad.getText().toString());
+
+                if (Almacen.buscarPedido(idFoto) != null) {
+                    ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idFoto), cantidadActual);
+                    Almacen.getAlmacenPedidos().get(idFoto).getItemsPedido().add(item);
+                } else {
+                    Toast.makeText(getApplicationContext(), "No se ha podido añadir le producto al carrito", Toast.LENGTH_SHORT).show();
+                }
+
                 Toast.makeText(getApplicationContext(), "Se han añadido " + cantidadActual + " items de este producto al carrito", Toast.LENGTH_SHORT).show();
-
-
-
-
             }
         });
 

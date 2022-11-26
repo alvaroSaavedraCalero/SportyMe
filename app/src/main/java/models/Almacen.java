@@ -2,13 +2,14 @@ package models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 
 public class Almacen implements Serializable {
 
     private static ArrayList<User> almacenUsuarios = new ArrayList<>();
     private static ArrayList<Producto> almacenProductos = new ArrayList<>();
-    private static ArrayList<Pedido> almacenPedidos = new ArrayList<>();
+    private static HashMap<String, Pedido> almacenPedidos = new HashMap<>();
+
 
 
 
@@ -110,11 +111,11 @@ public class Almacen implements Serializable {
         Almacen.almacenProductos = almacenProductos;
     }
 
-    public static ArrayList<Pedido> getAlmacenPedidos() {
+    public static HashMap<String, Pedido> getAlmacenPedidos() {
         return almacenPedidos;
     }
 
-    public static void setAlmacenPedidos(ArrayList<Pedido> almacenPedidos) {
+    public static void setAlmacenPedidos(HashMap<String, Pedido> almacenPedidos) {
         Almacen.almacenPedidos = almacenPedidos;
     }
 
@@ -149,5 +150,10 @@ public class Almacen implements Serializable {
             }
         }
         return p;
+    }
+
+    public static Pedido buscarPedido(String nombre) {
+
+        return almacenPedidos.getOrDefault(nombre, null);
     }
 }

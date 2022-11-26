@@ -14,6 +14,14 @@ public class Pedido implements Serializable {
         this.itemsPedido=new ArrayList<ItemPedido>();
     }
 
+    public ArrayList<ItemPedido> getItemsPedido() {
+        return itemsPedido;
+    }
+
+    public void setItemsPedido(ArrayList<ItemPedido> itemsPedido) {
+        this.itemsPedido = itemsPedido;
+    }
+
     public double getSubtotal() {
         return calcularSubTotal();
     }
