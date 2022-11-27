@@ -166,7 +166,12 @@ public class PrincipalActivity extends AppCompatActivity {
                 return true;
 
             case R.id.Perfil:
-                // nos vamos a la vista del perfil
+
+                User s = (User) intent.getSerializableExtra("usuario");
+                Intent nuevoIntent= new Intent(PrincipalActivity.this,PerfilActivity.class);
+                nuevoIntent.putExtra("usuario",s);
+                startActivity(nuevoIntent);
+
                 return true;
 
             case R.id.logOut:
