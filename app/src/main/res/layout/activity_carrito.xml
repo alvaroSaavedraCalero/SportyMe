@@ -10,8 +10,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="410dp"
-        android:layout_height="600dp"
+        android:layout_width="413dp"
+        android:layout_height="470dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,16 +21,54 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/botonRealizarCompraCarrito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="@string/botonRealizarCompra"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.128" />
+        app:layout_constraintVertical_bias="0.732" />
+
+    <TextView
+        android:id="@+id/textoSubtotal"
+        android:layout_width="91dp"
+        android:layout_height="33dp"
+        android:text="@string/subtotal"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/botonRealizarCompraCarrito"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.766" />
+
+    <TextView
+        android:id="@+id/textoGastosEnvio"
+        android:layout_width="91dp"
+        android:layout_height="33dp"
+        android:text="@string/gastosEnvio"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/botonRealizarCompraCarrito"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toEndOf="@+id/textoSubtotal"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.766" />
+
+    <TextView
+        android:id="@+id/textoTotal"
+        android:layout_width="91dp"
+        android:layout_height="33dp"
+        android:text="@string/total"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/botonRealizarCompraCarrito"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintStart_toEndOf="@+id/textoGastosEnvio"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.766" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

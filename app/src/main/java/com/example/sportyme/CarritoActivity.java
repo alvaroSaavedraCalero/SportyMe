@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -23,6 +24,10 @@ public class CarritoActivity extends AppCompatActivity {
     private Intent intent;
 
     private ScrollView scrollView;
+    private Button botonRealizarCompra;
+    private TextView subtotal;
+    private TextView gastosEnvio;
+    private TextView total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,11 @@ public class CarritoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_carrito);
 
         scrollView = (ScrollView) findViewById(R.id.scrollView2);
+        botonRealizarCompra = (Button) findViewById(R.id.botonRealizarCompraCarrito);
+        subtotal = (TextView) findViewById(R.id.textoSubtotal);
+        gastosEnvio = (TextView) findViewById(R.id.textoGastosEnvio);
+        total = (TextView) findViewById(R.id.textoTotal);
+
         intent = getIntent();
 
         User s = (User) intent.getSerializableExtra("usuario");
