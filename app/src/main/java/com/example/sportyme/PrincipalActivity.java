@@ -142,23 +142,27 @@ public class PrincipalActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.FiltradoXCamisetas:
-                // llamamos a una funcion para mostar solamente las camisetas
-                //mostrarPorFiltrado("Camisetas");
+
+                filtrarporCamisetas();
+
                 return true;
 
             case R.id.FiltradoXPantalones:
-                // llamamos a una funcion para mostrar solamente los pantalones
-                //mostrarPorFiltrado("Pantalones");
+
+                filtrarporPantalones();
+
                 return true;
 
             case R.id.FiltradoXSudaderas:
-                // llamamos a una funcion para mostrar solamente las sudaderas
-                //mostrarPorFiltrado("Sudaderas");
+
+                filtrarporSudaderas();
+
                 return true;
 
             case R.id.FiltradoXZapatillas:
-                // llamamos a una funcion para mostrar solamente las zapatillas
-                //mostrarPorFiltrado("Zapatillas");
+
+                filtrarporZapatillas();
+
                 return true;
 
             case R.id.Perfil:
@@ -178,4 +182,91 @@ public class PrincipalActivity extends AppCompatActivity {
                 return false;
         }
     }
+
+    public void filtrarporCamisetas(){
+
+        camiseta01.setImageResource(R.drawable.camiseta1);
+        camiseta02.setImageResource(R.drawable.camiseta2);
+        camiseta03.setImageResource(R.drawable.camiseta3);
+        camiseta01.setContentDescription("camiseta1");
+        camiseta02.setContentDescription("camiseta2");
+        camiseta03.setContentDescription("camiseta3");
+        pantalon01.setVisibility(View.INVISIBLE);
+        pantalon02.setVisibility(View.INVISIBLE);
+        pantalon03.setVisibility(View.INVISIBLE);
+        sudadera01.setVisibility(View.INVISIBLE);
+        sudadera02.setVisibility(View.INVISIBLE);
+        sudadera03.setVisibility(View.INVISIBLE);
+        zapas01.setVisibility(View.INVISIBLE);
+        zapas02.setVisibility(View.INVISIBLE);
+        zapas03.setVisibility(View.INVISIBLE);
+
+
+    }
+
+    public void filtrarporPantalones(){
+
+        camiseta01.setImageResource(R.drawable.pantalon1);
+        camiseta02.setImageResource(R.drawable.pantalon2);
+        camiseta03.setImageResource(R.drawable.pantalon3);
+        camiseta01.setContentDescription("pantalon1");
+        camiseta02.setContentDescription("pantalon2");
+        camiseta03.setContentDescription("pantalon3");
+        pantalon01.setVisibility(View.INVISIBLE);
+        pantalon02.setVisibility(View.INVISIBLE);
+        pantalon03.setVisibility(View.INVISIBLE);
+        sudadera01.setVisibility(View.INVISIBLE);
+        sudadera02.setVisibility(View.INVISIBLE);
+        sudadera03.setVisibility(View.INVISIBLE);
+        zapas01.setVisibility(View.INVISIBLE);
+        zapas02.setVisibility(View.INVISIBLE);
+        zapas03.setVisibility(View.INVISIBLE);
+
+
+
+    }
+
+    public void filtrarporSudaderas(){
+
+        camiseta01.setImageResource(R.drawable.sudadera1);
+        camiseta02.setImageResource(R.drawable.sudadera2);
+        camiseta03.setImageResource(R.drawable.sudadera3);
+        camiseta01.setContentDescription("sudadera1");
+        camiseta02.setContentDescription("sudadera2");
+        camiseta03.setContentDescription("sudadera3");
+        pantalon01.setVisibility(View.INVISIBLE);
+        pantalon02.setVisibility(View.INVISIBLE);
+        pantalon03.setVisibility(View.INVISIBLE);
+        sudadera01.setVisibility(View.INVISIBLE);
+        sudadera02.setVisibility(View.INVISIBLE);
+        sudadera03.setVisibility(View.INVISIBLE);
+        zapas01.setVisibility(View.INVISIBLE);
+        zapas02.setVisibility(View.INVISIBLE);
+        zapas03.setVisibility(View.INVISIBLE);
+
+
+    }
+
+    public void filtrarporZapatillas(){
+
+        camiseta01.setImageResource(R.drawable.zapatillas1);
+        camiseta02.setImageResource(R.drawable.zapatillas2);
+        camiseta03.setImageResource(R.drawable.zapatillas3);
+        camiseta01.setContentDescription("zapatillas1");
+        camiseta02.setContentDescription("zapatillas2");
+        camiseta03.setContentDescription("zapatillas3");
+        pantalon01.setVisibility(View.INVISIBLE);
+        pantalon02.setVisibility(View.INVISIBLE);
+        pantalon03.setVisibility(View.INVISIBLE);
+        sudadera01.setVisibility(View.INVISIBLE);
+        sudadera02.setVisibility(View.INVISIBLE);
+        sudadera03.setVisibility(View.INVISIBLE);
+        zapas01.setVisibility(View.INVISIBLE);
+        zapas02.setVisibility(View.INVISIBLE);
+        zapas03.setVisibility(View.INVISIBLE);
+
+
+    }
+
+
 }
