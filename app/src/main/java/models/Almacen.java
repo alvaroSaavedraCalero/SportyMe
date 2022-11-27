@@ -8,7 +8,7 @@ public class Almacen implements Serializable {
 
     private static ArrayList<User> almacenUsuarios = new ArrayList<>();
     private static ArrayList<Producto> almacenProductos = new ArrayList<>();
-    private static HashMap<String, Pedido> almacenPedidos = new HashMap<>();
+    private static ArrayList<Pedido> almacenPedidos = new ArrayList<>();
 
 
 
@@ -111,11 +111,11 @@ public class Almacen implements Serializable {
         Almacen.almacenProductos = almacenProductos;
     }
 
-    public static HashMap<String, Pedido> getAlmacenPedidos() {
+    public static ArrayList<Pedido> getAlmacenPedidos() {
         return almacenPedidos;
     }
 
-    public static void setAlmacenPedidos(HashMap<String, Pedido> almacenPedidos) {
+    public static void setAlmacenPedidos(ArrayList<Pedido> almacenPedidos) {
         Almacen.almacenPedidos = almacenPedidos;
     }
 
@@ -154,6 +154,16 @@ public class Almacen implements Serializable {
 
     public static Pedido buscarPedido(String nombre) {
 
-        return almacenPedidos.getOrDefault(nombre, null);
+        Pedido p = null;
+        int i = 0;
+
+
+        while (i < almacenProductos.size()) {
+            if (almacenProductos.get(i).getIdFoto().equals(nombre)) {
+                return almacenPedidos.get(i);
+            } else{
+                i++;
+            }
+        } return p;
     }
 }
