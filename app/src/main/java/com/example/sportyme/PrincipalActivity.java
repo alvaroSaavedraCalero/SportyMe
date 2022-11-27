@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import models.Almacen;
+import models.Pedido;
+import models.Producto;
 import models.User;
 
 public class PrincipalActivity extends AppCompatActivity {
@@ -34,6 +37,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private ImageButton zapas01;
     private ImageButton zapas02;
     private ImageButton zapas03;
+    private String idFoto;
 
     private Button botonCompra;
 
@@ -48,8 +52,10 @@ public class PrincipalActivity extends AppCompatActivity {
         intent=getIntent();
 
         User s = (User) intent.getSerializableExtra("usuario");
+
         Toast.makeText(getApplicationContext(), "Estoy en la vista principal con el usuario " +
                s.getUsername() , Toast.LENGTH_SHORT).show();
+
         Almacen almacen = (Almacen) intent.getSerializableExtra("almacen");
 
         camiseta01=(ImageButton)findViewById(R.id.camiseta1);
@@ -87,16 +93,23 @@ public class PrincipalActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    String idFoto=foto.getContentDescription().toString();
+                    idFoto=foto.getContentDescription().toString();
+
+                    //-------ESTO ES LO QUE HE METIDO NUEVO----------//
+
+                    Producto productoPinchado=new Producto(idFoto);
 
                     Intent descripFoto=new Intent(PrincipalActivity.this,MostrarArticuloActivity.class);
-                    intent.putExtra("nombreFoto",idFoto);
-                    intent.putExtra("almacen", almacen);
-                    intent.putExtra("usuario", s);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    descripFoto.putExtra("producto",productoPinchado);
+                    descripFoto.putExtra("almacen", almacen);
+                    descripFoto.putExtra("usuario", s);
+                    descripFoto.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    Log.i("pillo el id",idFoto);
 
                     startActivity(descripFoto);
 
+                    //--------------------------------------------//
                 }
             });
         }

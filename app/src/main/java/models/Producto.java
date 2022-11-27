@@ -21,6 +21,14 @@ public class Producto implements Serializable {
         this.categoria=categoria;
     }
 
+    //-------HE CREADO ESTE CONSTRUCTOR NUEVO PA PASAR SOLO EL ID DE LA FOTO-----//
+
+    public Producto(String idFoto){
+        this.idFoto=idFoto;
+    }
+
+    //------------------------------------------------------------------------//
+
     public int getCantidad() {
         return cantidad;
     }

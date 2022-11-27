@@ -24,7 +24,6 @@ public class MostrarArticuloActivity extends AppCompatActivity {
     private Bundle bundle;
     private Almacen almacen;
     private Producto productoActual;
-    private String idFoto;
 
     private ImageView foto;
     private TextView descripción;
@@ -33,20 +32,28 @@ public class MostrarArticuloActivity extends AppCompatActivity {
     private TextView cantidad;
     private Spinner tallaje;
     private Button aniadirCarrito;
+    String idPicture;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_articulo);
-
         intent = getIntent();
-        idFoto = intent.getStringExtra("nombreFoto");
+
+        //--------------------ESTO ES LO QUE HE CAMBIADO----------------//
+
+        Producto productoEnviado=(Producto) intent.getSerializableExtra("producto");
+
+        idPicture=productoEnviado.getIdFoto();
+
+        //-------------------------------------------------------------//
+
         User s = (User) intent.getSerializableExtra("usuario");
 
         almacen = (Almacen) intent.getSerializableExtra("almacen");
 
-        Toast.makeText(getApplicationContext(), "Estas eligiendo el atriculo " + idFoto, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Estas eligiendo el articulo " + idPicture, Toast.LENGTH_SHORT).show();
 
         foto = (ImageView) findViewById(R.id.imagenMostrarArticulo);
         descripción = (TextView) findViewById(R.id.descripcionMostrarArticulo);
@@ -59,9 +66,9 @@ public class MostrarArticuloActivity extends AppCompatActivity {
 
 
 
-        productoActual = Almacen.recuperarProducto(idFoto);
+        productoActual = Almacen.recuperarProducto(idPicture);
 
-        foto.setImageResource(devuelveDrawableFoto(idFoto));
+       foto.setImageResource(devuelveDrawableFoto(idPicture));
         descripción.setText(productoActual.getDescripcion());
 
         productoActual.setTallaEscogida((String) tallaje.getSelectedItem());
@@ -96,12 +103,12 @@ public class MostrarArticuloActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int cantidadActual = Integer.parseInt(cantidad.getText().toString());
 
-                if (Almacen.buscarPedido(idFoto) != null) {
-                    ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idFoto), cantidadActual);
-                    Almacen.getAlmacenPedidos().get(idFoto).getItemsPedido().add(item);
+                if (Almacen.buscarPedido(idPicture) != null) {
+                    ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
+                    Almacen.getAlmacenPedidos().get(idPicture).getItemsPedido().add(item);
                 } else {
                     Pedido p = new Pedido();
-                    ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idFoto), cantidadActual);
+                    ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
                     p.getItemsPedido().add(item);
                     Almacen.getAlmacenPedidos().put(s.getUsername(), p);
                 }

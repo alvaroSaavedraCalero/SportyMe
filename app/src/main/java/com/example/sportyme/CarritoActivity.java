@@ -39,7 +39,7 @@ public class CarritoActivity extends AppCompatActivity {
 
 
             ImageView imagen = new ImageView(fila.getContext());
-            imagen.setImageResource(MostrarArticuloActivity.devuelveDrawableFoto(i.getProductoPedido().getIdFoto()));
+           // imagen.setImageResource(MostrarArticuloActivity.devuelveDrawableFoto(i.getProductoPedido().getIdFoto()));
 
 
             TextView nombre = new TextView(fila.getContext());
