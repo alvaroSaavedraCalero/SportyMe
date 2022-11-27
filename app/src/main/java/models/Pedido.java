@@ -7,11 +7,11 @@ public class Pedido implements Serializable {
 
     private ArrayList<ItemPedido> itemsPedido;
     private double subtotal;
-    private double gastosDeEnvio=0;
+    private double gastosDeEnvio = 0;
     private double total;
 
-    public Pedido(){
-        this.itemsPedido=new ArrayList<ItemPedido>();
+    public Pedido() {
+        this.itemsPedido = new ArrayList<ItemPedido>();
     }
 
     public ArrayList<ItemPedido> getItemsPedido() {
@@ -32,14 +32,16 @@ public class Pedido implements Serializable {
 
     public double getGastosDeEnvio() {
         return gastosDeEnvio;
-    };
+    }
+
+
 
     public void setGastosDeEnvio(double gastosDeEnvio) {
         this.gastosDeEnvio = gastosDeEnvio;
     }
 
     public double getTotal() {
-        return this.subtotal+this.gastosDeEnvio;
+        return this.subtotal + this.gastosDeEnvio;
     }
 
     public void setTotal(double total) {
@@ -47,17 +49,19 @@ public class Pedido implements Serializable {
     }
 
 
-    private double calcularSubTotal(){
+    public double calcularSubTotal() {
 
-        double _subtotal=0;
+        double _subtotal = 0;
 
-        for(ItemPedido item: itemsPedido){
+        for (ItemPedido item : itemsPedido) {
 
-           _subtotal+=(item.getProductoPedido().getPrecio()*item.getCantidadPedido());
+            _subtotal += (item.getProductoPedido().getPrecio() * item.getCantidadPedido());
         }
 
         return _subtotal;
 
     }
+
+
 
 }
