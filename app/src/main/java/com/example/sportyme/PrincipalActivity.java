@@ -117,8 +117,11 @@ public class PrincipalActivity extends AppCompatActivity {
         botonCompra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                User user = new User();
+                user.setUsername(s.getUsername());
                 intent = new Intent(getApplicationContext(), CarritoActivity.class);
-                intent.putExtra("usuario", s);
+                intent.putExtra("usuario", user);
+                Log.i("vista principal valor usuario", user.getUsername());
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

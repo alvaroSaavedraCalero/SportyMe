@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import models.Almacen;
 import models.ItemPedido;
@@ -28,8 +30,11 @@ public class CarritoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_carrito);
 
         scrollView = (ScrollView) findViewById(R.id.scrollView2);
+        intent = getIntent();
 
         User s = (User) intent.getSerializableExtra("usuario");
+
+        Log.i("valor de usuario en carrito", s.getUsername());
 
         p = Almacen.buscarPedido(s.getUsername());
 
@@ -37,16 +42,24 @@ public class CarritoActivity extends AppCompatActivity {
             LinearLayout fila = new LinearLayout(scrollView.getContext());
             fila.setOrientation(LinearLayout.HORIZONTAL);
 
-
             ImageView imagen = new ImageView(fila.getContext());
-           // imagen.setImageResource(MostrarArticuloActivity.devuelveDrawableFoto(i.getProductoPedido().getIdFoto()));
-
+            imagen.setImageResource(MostrarArticuloActivity.devuelveDrawableFoto(i.getProductoPedido().getIdFoto()));
 
             TextView nombre = new TextView(fila.getContext());
+            nombre.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
             nombre.setText(i.getProductoPedido().getNombreProducto());
 
             TextView cantidad = new TextView(fila.getContext());
-            cantidad.setText(String.valueOf(i.getCantidadPedido()));
+            cantidad.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
+            String a = "x" + String.valueOf(i.getCantidadPedido());
+            cantidad.setText(a);
+
+            fila.addView(imagen);
+            fila.addView(nombre);
+            fila.addView(cantidad);
+
+            scrollView.addView(fila);
+
         }
 
 
