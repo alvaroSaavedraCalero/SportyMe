@@ -34,15 +34,23 @@ public class CarritoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito);
 
-        scrollView = (ScrollView) findViewById(R.id.scrollView2);
-        botonRealizarCompra = (Button) findViewById(R.id.botonRealizarCompraCarrito);
-        subtotal = (TextView) findViewById(R.id.textoSubtotal);
-        gastosEnvio = (TextView) findViewById(R.id.textoGastosEnvio);
-        total = (TextView) findViewById(R.id.textoTotal);
-
         intent = getIntent();
 
         User s = (User) intent.getSerializableExtra("usuario");
+
+        scrollView = (ScrollView) findViewById(R.id.scrollView2);
+        botonRealizarCompra = (Button) findViewById(R.id.botonRealizarCompraCarrito);
+
+        subtotal = (TextView) findViewById(R.id.textoSubtotal);
+        String textoSubtotal = String.valueOf(Almacen.buscarPedido(s.getUsername()).calcularSubTotal());
+        subtotal.setText(textoSubtotal);
+        gastosEnvio = (TextView) findViewById(R.id.textoGastosEnvio);
+        String textoGE = String.valueOf(Almacen.buscarPedido(s.getUsername()).getGastosDeEnvio());
+        gastosEnvio.setText(textoGE);
+        total = (TextView) findViewById(R.id.textoTotal);
+        String textoTotal = String.valueOf(Almacen.buscarPedido(s.getUsername()).getTotal());
+        total.setText(textoTotal);
+
 
         Log.i("valor de usuario en carrito", s.getUsername());
 
