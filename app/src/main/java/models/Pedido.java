@@ -15,6 +15,9 @@ public class Pedido implements Serializable {
         this.usuario = username;
 
     }
+    public Pedido() {
+
+    }
 
     public ArrayList<ItemPedido> getItemsPedido() {
         return itemsPedido;

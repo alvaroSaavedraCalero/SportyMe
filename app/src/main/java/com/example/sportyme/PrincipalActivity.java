@@ -38,6 +38,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private ImageButton zapas02;
     private ImageButton zapas03;
     private String idFoto;
+    private ImageButton resetClick;
 
     private Button botonCompra;
 
@@ -70,6 +71,7 @@ public class PrincipalActivity extends AppCompatActivity {
         zapas01=(ImageButton)findViewById(R.id.zapatillas1);
         zapas02=(ImageButton)findViewById(R.id.zapatillas2);
         zapas03=(ImageButton)findViewById(R.id.zapatillas3);
+        resetClick=(ImageButton)findViewById(R.id.imageView);
 
         botonCompra = (Button) findViewById(R.id.botonRealizarCompra);
 
@@ -86,6 +88,28 @@ public class PrincipalActivity extends AppCompatActivity {
         fotos.add(zapas02);
         fotos.add(zapas03);
 
+        resetClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                camiseta01.setImageResource(R.drawable.camiseta1);
+                camiseta02.setImageResource(R.drawable.camiseta2);
+                camiseta03.setImageResource(R.drawable.camiseta3);
+                camiseta01.setContentDescription("camiseta1");
+                camiseta02.setContentDescription("camiseta2");
+                camiseta03.setContentDescription("camiseta3");
+                pantalon01.setVisibility(View.VISIBLE);
+                pantalon02.setVisibility(View.VISIBLE);
+                pantalon03.setVisibility(View.VISIBLE);
+                sudadera01.setVisibility(View.VISIBLE);
+                sudadera02.setVisibility(View.VISIBLE);
+                sudadera03.setVisibility(View.VISIBLE);
+                zapas01.setVisibility(View.VISIBLE);
+                zapas02.setVisibility(View.VISIBLE);
+                zapas03.setVisibility(View.VISIBLE);
+
+            }
+        });
 
        for(ImageButton foto:fotos){
             foto.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +133,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
                     startActivity(descripFoto);
 
-                    //--------------------------------------------//
+                    //----------------------------------------------//
                 }
             });
         }
@@ -272,6 +296,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
 
     }
+
 
 
 }
