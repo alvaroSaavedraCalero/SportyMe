@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:backgroundTint="@color/material_dynamic_neutral_variant20"
     tools:context=".LoginActivity">
 

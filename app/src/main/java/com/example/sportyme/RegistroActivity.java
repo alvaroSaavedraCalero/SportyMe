@@ -2,12 +2,16 @@ package com.example.sportyme;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import models.Almacen;
 import models.Direccion;
@@ -69,6 +73,31 @@ public class RegistroActivity extends AppCompatActivity {
 
             }
         });
+
+        ArrayList<EditText> textos=new ArrayList<>();
+        textos.add(nombreRegistro);
+        textos.add(userRegistro);
+        textos.add(apellidosRegistro);
+        textos.add(emailRegistro);
+        textos.add(passRegistro);
+        textos.add(passRepiteRegistro);
+        textos.add(calleRegistro);
+        textos.add(CPRegistro);
+        textos.add(localidadRegistro);
+        textos.add(comunidadRegistro);
+
+        for(EditText t:textos){
+
+            t.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean b) {
+                    InputMethodManager im=(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    im.hideSoftInputFromWindow(view.getWindowToken(),0);
+                }
+            });
+
+
+        }
 
 
     }
