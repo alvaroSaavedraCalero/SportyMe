@@ -5,22 +5,23 @@ import java.util.ArrayList;
 
 public class Pedido implements Serializable {
 
-    private static ArrayList<ItemPedido> itemsPedido = new ArrayList<>();
+    private ArrayList<ItemPedido> itemsPedido = new ArrayList<>();
     private String usuario;
     private double subtotal;
     private double gastosDeEnvio = 0;
     private double total;
 
-    public Pedido() {
+    public Pedido(String username) {
+        this.usuario = username;
 
     }
 
-    public static ArrayList<ItemPedido> getItemsPedido() {
+    public ArrayList<ItemPedido> getItemsPedido() {
         return itemsPedido;
     }
 
-    public static void setItemsPedido(ArrayList<ItemPedido> itemsPedido) {
-        Pedido.itemsPedido = itemsPedido;
+    public void setItemsPedido(ArrayList<ItemPedido> itemsPedido) {
+        this.itemsPedido = itemsPedido;
     }
 
     public double getSubtotal() {

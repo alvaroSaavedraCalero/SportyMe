@@ -23,7 +23,7 @@ public class User implements Serializable {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
-        this.pedidoActual = new Pedido();
+        this.pedidoActual = new Pedido(username);
         this.direccionEnvio = new Direccion(direccionEnvio.getCalle(), direccionEnvio.getCP(), direccionEnvio.getProvincia(),
                 direccionEnvio.getLocalidad());
     }

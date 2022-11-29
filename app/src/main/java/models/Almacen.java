@@ -8,7 +8,7 @@ public class Almacen implements Serializable {
 
     private static ArrayList<User> almacenUsuarios = new ArrayList<>();
     private static ArrayList<Producto> almacenProductos = new ArrayList<>();
-    private static ArrayList<Pedido> almacenPedidos = new ArrayList<>();
+
 
 
 
@@ -111,13 +111,7 @@ public class Almacen implements Serializable {
         Almacen.almacenProductos = almacenProductos;
     }
 
-    public static ArrayList<Pedido> getAlmacenPedidos() {
-        return almacenPedidos;
-    }
 
-    public static void setAlmacenPedidos(ArrayList<Pedido> almacenPedidos) {
-        Almacen.almacenPedidos = almacenPedidos;
-    }
 
     public static User comprobarCredencialesLogin(String user, String pass) {
         boolean continuar = true;
@@ -152,18 +146,38 @@ public class Almacen implements Serializable {
         return p;
     }
 
-    public static Pedido buscarPedido(String nombre) {
+    public static Pedido buscarPedido(String nombreUser) {
 
         Pedido p = null;
         int i = 0;
+        boolean continuar = true;
 
-
-        while (i < almacenProductos.size()) {
-            if (almacenProductos.get(i).getIdFoto().equals(nombre)) {
-                return almacenPedidos.get(i);
+        while (i < almacenUsuarios.size() && continuar) {
+            if (almacenUsuarios.get(i).getPedidoActual().getUsuario().equals(nombreUser)) {
+                p = almacenUsuarios.get(i).getPedidoActual();
+                continuar = false;
             } else{
                 i++;
             }
         } return p;
+    }
+
+    public static ItemPedido buscarItem(String idFoto) {
+        ItemPedido item = null;
+        int i = 0, j = 0;
+        boolean continuar = true;
+
+        while (i < almacenUsuarios.size() && continuar) {
+            while (j < almacenUsuarios.get(i).getPedidoActual().getItemsPedido().size() && continuar) {
+                if (almacenUsuarios.get(i).getPedidoActual().getItemsPedido().get(j).getProductoPedido().getIdFoto().equals(idFoto)) {
+                    item = almacenUsuarios.get(i).getPedidoActual().getItemsPedido().get(j);
+                    continuar = false;
+                } else {
+                    j++;
+                }
+            }
+            i++;
+        }
+        return item;
     }
 }

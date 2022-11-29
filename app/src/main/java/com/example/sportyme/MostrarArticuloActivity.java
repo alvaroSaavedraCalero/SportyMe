@@ -103,23 +103,16 @@ public class MostrarArticuloActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int cantidadActual = Integer.parseInt(cantidad.getText().toString());
 
-                // Si no existe ningun pedido, lo creamos y añadimos el item
-                if (Almacen.buscarPedido(idPicture) == null) {
 
-                    Pedido p = new Pedido();
-                    p.setUsuario(s.getUsername());
+
+                Pedido pedido = Almacen.buscarPedido(s.getUsername());
+                // Si no hay items en el pedio, lo añadimos
+                if (pedido.getItemsPedido().size() == 0) {
                     ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
-                    Pedido.getItemsPedido().add(item);
-                    Almacen.getAlmacenPedidos().add(p);
-
-                // Si existe el pedido, le introducimos el item directamente
+                    pedido.getItemsPedido().add(item);
+                // Si hay items en el pedido, buscamos el item y modificamos la cantidad
                 } else {
-                    ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
-                    Almacen.getAlmacenPedidos().forEach((Pedido p) -> {
-                        if (p.getUsuario().equals(s.getUsername())) {
-                            Pedido.getItemsPedido().add(item);
-                        }
-                    });
+                    Almacen.buscarItem(idPicture).setCantidadPedido(cantidadActual);
                 }
 
                 Toast.makeText(getApplicationContext(), "Se han añadido " + cantidadActual + " items de este producto al carrito", Toast.LENGTH_SHORT).show();
