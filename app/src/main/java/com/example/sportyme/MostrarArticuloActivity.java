@@ -100,13 +100,12 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         aniadirCarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 int cantidadActual = Integer.parseInt(cantidad.getText().toString());
-
-
-
                 Pedido pedido = Almacen.buscarPedido(s.getUsername());
                 // Si no hay items en el pedio, lo añadimos
                 if (pedido.getItemsPedido().size() == 0) {
+
                     ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
                     pedido.getItemsPedido().add(item);
                     // Si hay items en el pedido, buscamos el item y modificamos la cantidad

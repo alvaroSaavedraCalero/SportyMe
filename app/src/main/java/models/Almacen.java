@@ -142,7 +142,7 @@ public class Almacen implements Serializable {
 
     public static Pedido buscarPedido(String nombreUser) {
 
-        Pedido p = null;
+        Pedido p = new Pedido();
         int i = 0;
         boolean continuar = true;
 

@@ -16,7 +16,6 @@ public class User implements Serializable {
 
     // constructores
 
-
     public User(String username, String password, String nombre, String apellidos, String correo, Direccion direccionEnvio) {
         this.username = username;
         this.password = password;
