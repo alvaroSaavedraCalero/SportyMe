@@ -9,7 +9,7 @@ public class Pedido implements Serializable {
     private String usuario;
     private double subtotal;
     private double gastosDeEnvio = 0;
-    private double total;
+
 
     public Pedido(String username) {
         this.usuario = username;
@@ -28,6 +28,7 @@ public class Pedido implements Serializable {
     }
 
     public double getSubtotal() {
+        this.subtotal = calcularSubTotal();
         return calcularSubTotal();
     }
 
@@ -43,6 +44,10 @@ public class Pedido implements Serializable {
         return usuario;
     }
 
+    public double getTotal() {
+        return subtotal + gastosDeEnvio;
+    }
+
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
@@ -51,13 +56,11 @@ public class Pedido implements Serializable {
         this.gastosDeEnvio = gastosDeEnvio;
     }
 
-    public double getTotal() {
-        return this.subtotal + this.gastosDeEnvio;
-    }
 
-    public void setTotal(double total) {
-        this.total = total;
-    }
+
+
+
+
 
 
     public double calcularSubTotal() {

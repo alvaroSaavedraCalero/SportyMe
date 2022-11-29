@@ -61,7 +61,7 @@ public class CarritoActivity extends AppCompatActivity {
 
         p = Almacen.buscarPedido(s.getUsername());
 
-        Log.i("valor de almacen al realizar el pedido", Arrays.toString(p.getItemsPedido().toArray()));
+
 
         for (ItemPedido i : p.getItemsPedido()) {
             LinearLayout fila = new LinearLayout(scrollView.getContext());
@@ -72,15 +72,15 @@ public class CarritoActivity extends AppCompatActivity {
 
             TextView nombre = new TextView(fila.getContext());
             nombre.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
-            nombre.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
+            nombre.setPadding(10, 0, 10, 0);
             nombre.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
-
             nombre.setText(i.getProductoPedido().getNombreProducto());
+
 
             TextView cantidad = new TextView(fila.getContext());
             cantidad.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
-            cantidad.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
-            cantidad.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.purple_500));
+            cantidad.setPadding(10, 0, 10, 0);
+            cantidad.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.teal_700));
             String a = "x" + String.valueOf(i.getCantidadPedido());
             cantidad.setText(a);
 
@@ -92,7 +92,13 @@ public class CarritoActivity extends AppCompatActivity {
 
         }
 
-
+        botonRealizarCompra = (Button) findViewById(R.id.botonRealizarCompraCarrito);
+        botonRealizarCompra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "La compra ha sido realizada", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
