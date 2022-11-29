@@ -31,7 +31,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:text="Nombre:"
+                android:text="@string/nombrePerfil"
                 android:textColor="@color/white" />
 
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:text="Apellidos:"
+                android:text="@string/apellidosPerfil"
                 android:textColor="@color/white" />
 
             <TextView
@@ -84,7 +84,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:text="Usuario:"
+                android:text="@string/usuarioPerfil"
                 android:textColor="@color/white" />
 
             <TextView
@@ -111,7 +111,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:text="Correo:"
+                android:text="@string/correoPerfil"
                 android:textColor="@color/white" />
 
             <TextView
@@ -144,7 +144,7 @@
         android:id="@+id/btnVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pag. Principal"
+        android:text="@string/volverpagPrincipal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

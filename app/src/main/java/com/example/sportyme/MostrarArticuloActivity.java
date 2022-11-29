@@ -32,6 +32,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
     private TextView cantidad;
     private Spinner tallaje;
     private Button aniadirCarrito;
+    private TextView precio;
     String idPicture;
 
 
@@ -43,9 +44,9 @@ public class MostrarArticuloActivity extends AppCompatActivity {
 
         //--------------------ESTO ES LO QUE HE CAMBIADO----------------//
 
-        Producto productoEnviado=(Producto) intent.getSerializableExtra("producto");
+        Producto productoEnviado = (Producto) intent.getSerializableExtra("producto");
 
-        idPicture=productoEnviado.getIdFoto();
+        idPicture = productoEnviado.getIdFoto();
 
         //-------------------------------------------------------------//
 
@@ -62,8 +63,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         cantidad = (TextView) findViewById(R.id.cantidadMostrarArticulo);
         tallaje = (Spinner) findViewById(R.id.Tallaje);
         aniadirCarrito = (Button) findViewById(R.id.botonAniadirCarrito);
-
-
+        precio = (TextView) findViewById(R.id.textoPrecio);
 
 
         productoActual = Almacen.recuperarProducto(idPicture);
@@ -73,8 +73,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
 
         productoActual.setTallaEscogida((String) tallaje.getSelectedItem());
 
-
-
+        precio.setText(String.valueOf(productoActual.getPrecio()));
 
         disminuir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,9 +108,15 @@ public class MostrarArticuloActivity extends AppCompatActivity {
 
                     ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
                     pedido.getItemsPedido().add(item);
-                // Si hay items en el pedido, buscamos el item y modificamos la cantidad
+                    // Si hay items en el pedido, buscamos el item y modificamos la cantidad
                 } else {
-                    Almacen.buscarItem(idPicture).setCantidadPedido(cantidadActual);
+                    if (Almacen.buscarItem(idPicture) != null) {
+                        Almacen.buscarItem(idPicture).setCantidadPedido(cantidadActual);
+                        // Si no existe ese item en el pedido, lo añadimos
+                    } else {
+                        ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
+                        pedido.getItemsPedido().add(item);
+                    }
                 }
 
                 Toast.makeText(getApplicationContext(), "Se han añadido " + cantidadActual + " items de este producto al carrito", Toast.LENGTH_SHORT).show();
