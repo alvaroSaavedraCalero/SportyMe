@@ -38,6 +38,7 @@
         <item>XL</item>
         <item>XXL</item>
     </string-array>
+    <string name="precio">precio</string>
 
     <!-- Strings del menu de la vista principal -->
     <string name="filtradoCamisetas">Filtrar por camisetas</string>
@@ -47,6 +48,14 @@
     <string name="perfil">Perfil</string>
     <string name="logOut">Desconectarse</string>
 
+    <!-- String de la vista perfil -->
+    <string name="nombrePerfil">Nombre:</string>
+    <string name="apellidosPerfil">Apellidos:</string>
+    <string name="usuarioPerfil">Usuario:</string>
+    <string name="correoPerfil">Correo:</string>
+    <string name="volverpagPrincipal">Pag. Principal</string>
+
+
     <!--String para la información de la vista principal -->
     <string name="descripcionImagen">Descripcion imagen</string>
 
@@ -55,5 +64,6 @@
     <string name="subtotal">Subtotal</string>
     <string name="total">Total</string>
     <string name="gastosEnvio">Gastos de envio</string>
+
 
 </resources>

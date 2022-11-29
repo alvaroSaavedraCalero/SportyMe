@@ -15,7 +15,7 @@
         android:contentDescription="@string/descripcionImagen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.028"
@@ -23,17 +23,16 @@
 
     <TextView
         android:id="@+id/descripcionMostrarArticulo"
-        android:layout_width="383dp"
-        android:layout_height="199dp"
+        android:layout_width="387dp"
+        android:layout_height="110dp"
         android:text="@string/textoDescripcion"
         android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <Button
         android:id="@+id/botonQuitarMostrarArticulo"
@@ -104,5 +103,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cantidadMostrarArticulo"
         app:layout_constraintVertical_bias="0.759" />
+
+    <TextView
+        android:id="@+id/textoPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/precio"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/descripcionMostrarArticulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagenMostrarArticulo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
