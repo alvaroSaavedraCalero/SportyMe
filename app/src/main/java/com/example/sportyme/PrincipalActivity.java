@@ -195,7 +195,11 @@ public class PrincipalActivity extends AppCompatActivity {
                 Intent nuevoIntent= new Intent(PrincipalActivity.this,PerfilActivity.class);
                 nuevoIntent.putExtra("usuario",s);
                 startActivity(nuevoIntent);
+                return true;
 
+            case R.id.Contacto:
+                intent.setClass(PrincipalActivity.this, ContactoActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.logOut:

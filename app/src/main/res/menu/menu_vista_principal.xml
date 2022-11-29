@@ -18,6 +18,9 @@
     <item android:id="@+id/Perfil"
         android:title="@string/perfil" />
 
+    <item android:id="@+id/Contacto"
+        android:title="@string/informacionContacto" />
+
     <item android:id="@+id/logOut"
         android:title="@string/logOut" />
 

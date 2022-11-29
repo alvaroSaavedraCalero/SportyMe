@@ -46,7 +46,13 @@
     <string name="filtradoSudaderas">Filtrar por sudaderas</string>
     <string name="filtradoZapatillas">Filtrar por zapatillas</string>
     <string name="perfil">Perfil</string>
+    <string name="informacionContacto">Informacion de contacto</string>
     <string name="logOut">Desconectarse</string>
+
+    <!-- String de la vista contacto -->
+    <string name="correoContacto">sportyme@sporyme.com</string>
+    <string name="telefonoContacto">689 68 68 68</string>
+    <string name="botonAtras">Pag. Principal</string>
 
     <!-- String de la vista perfil -->
     <string name="nombrePerfil">Nombre:</string>
