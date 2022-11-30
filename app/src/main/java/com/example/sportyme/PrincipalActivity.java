@@ -23,6 +23,7 @@ import models.User;
 
 public class PrincipalActivity extends AppCompatActivity {
 
+    // Atributos de la clase
     private Intent intent;
 
     private ImageButton camiseta01;
@@ -50,8 +51,8 @@ public class PrincipalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        // Obtenemos el usuario y el almacen del intent
         intent=getIntent();
-
         User s = (User) intent.getSerializableExtra("usuario");
 
         Toast.makeText(getApplicationContext(), "Estoy en la vista principal con el usuario " +
@@ -59,6 +60,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
         Almacen almacen = (Almacen) intent.getSerializableExtra("almacen");
 
+        // seteamos los ImagenButton y el boton de compra
         camiseta01=(ImageButton)findViewById(R.id.camiseta1);
         camiseta02=(ImageButton)findViewById(R.id.camiseta2);
         camiseta03=(ImageButton)findViewById(R.id.camiseta3);
@@ -88,6 +90,7 @@ public class PrincipalActivity extends AppCompatActivity {
         fotos.add(zapas02);
         fotos.add(zapas03);
 
+        // para resetear los filtros
         resetClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +114,7 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         });
 
+        // Añadimos el click a todas las fotos de la vista para que cuando hagamos click nos lleve a la vista activity_mostrar_articulo
        for(ImageButton foto:fotos){
             foto.setOnClickListener(new View.OnClickListener() {
 
@@ -118,9 +122,6 @@ public class PrincipalActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
                     idFoto=foto.getContentDescription().toString();
-
-                    //-------ESTO ES LO QUE HE METIDO NUEVO----------//
-
                     Producto productoPinchado=new Producto(idFoto);
 
                     Intent descripFoto=new Intent(PrincipalActivity.this,MostrarArticuloActivity.class);
@@ -133,11 +134,12 @@ public class PrincipalActivity extends AppCompatActivity {
 
                     startActivity(descripFoto);
 
-                    //----------------------------------------------//
+
                 }
             });
         }
 
+       // al hacer click en el boton realizar compra, nos lleva a la vista activity_carrito
         botonCompra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

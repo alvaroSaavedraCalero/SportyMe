@@ -27,9 +27,11 @@ import models.User;
 
 public class CarritoActivity extends AppCompatActivity {
 
+    // atributos de clase
     private Pedido p;
     private Intent intent;
 
+    // atributos de clase de la vista activity_carrito
     private TableLayout tabla;
     private Button botonRealizarCompra;
     private TextView subtotal;
@@ -42,11 +44,12 @@ public class CarritoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito);
 
+        // Obtenemos el usuario y el almacen del intent
         intent = getIntent();
-
         User s = (User) intent.getSerializableExtra("usuario");
         Almacen almacen=(Almacen)intent.getSerializableExtra("almacen");
 
+        // seteamos las respectivas vistas a los atributos de clase
         botonAtras=(Button)findViewById(R.id.btnSeguir);
 
         tabla = (TableLayout) findViewById(R.id.TableLayout);
@@ -64,23 +67,29 @@ public class CarritoActivity extends AppCompatActivity {
         String textoTotal = String.valueOf(Almacen.buscarPedido(s.getUsername()).getTotal());
         total.setText(textoTotal);
 
+        // Obtenemos el pedido del almacen
         p = Almacen.buscarPedido(s.getUsername());
 
 
 
+        // Para cada item que nos encontremos
         for (ItemPedido i : Pedido.getItemsPedido()) {
+            // Añadimos una fila
             TableRow fila = new TableRow(tabla.getContext());
             fila.setOrientation(LinearLayout.HORIZONTAL);
 
+            // Añadimos la imagen
             ImageView imagen = new ImageView(fila.getContext());
             imagen.setImageResource(MostrarArticuloActivity.devuelveDrawableFoto(i.getProductoPedido().getIdFoto()));
 
+            // Añadimos el nombre del item
             TextView nombre = new TextView(fila.getContext());
             nombre.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
             nombre.setPadding(10, 0, 10, 0);
             nombre.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
             nombre.setText(i.getProductoPedido().getNombreProducto());
 
+            // Añadimos la talla del item
             TextView talla = new TextView(fila.getContext());
             talla.setGravity(TextView.TEXT_ALIGNMENT_GRAVITY);
             talla.setPadding(10, 0, 10, 0);
@@ -88,6 +97,7 @@ public class CarritoActivity extends AppCompatActivity {
             String tallaString = "Talla " + i.getProductoPedido().getTallaEscogida();
             talla.setText(tallaString);
 
+            // Añadimos la cantidad
             TextView cantidad = new TextView(fila.getContext());
             cantidad.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
             cantidad.setPadding(10, 0, 10, 0);
@@ -95,20 +105,21 @@ public class CarritoActivity extends AppCompatActivity {
             String a = "x" + String.valueOf(i.getCantidadPedido());
             cantidad.setText(a);
 
+            // Todas estas vista las añadimos a la fila
             fila.addView(imagen);
             fila.addView(nombre);
             fila.addView(talla);
             fila.addView(cantidad);
 
+            // Y la fila la añadimos al TableLayout
             tabla.addView(fila);
 
         }
 
-
+        // Cuando hagamos click en el boton de realizar compra, nos dirigimos a la vista activity_final_compra
         botonRealizarCompra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent finCompra=new Intent(CarritoActivity.this,FinalCompra.class);
                 finCompra.putExtra("usuario",s);
                 finCompra.putExtra("almacen",almacen);
@@ -116,10 +127,10 @@ public class CarritoActivity extends AppCompatActivity {
             }
         });
 
+        // Si hacemos click en el boton atras, volveremos a la vista activity_principal
         botonAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent volverComprar=new Intent(CarritoActivity.this,PrincipalActivity.class);
                 volverComprar.putExtra("usuario",s);
                 volverComprar.putExtra("almacen",almacen);

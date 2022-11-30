@@ -20,6 +20,7 @@ import models.User;
 
 public class RegistroActivity extends AppCompatActivity {
 
+    // Atributos de la clase
     private EditText nombreRegistro;
     private EditText userRegistro;
     private EditText apellidosRegistro;
@@ -52,28 +53,24 @@ public class RegistroActivity extends AppCompatActivity {
         btnRegistro=(Button) findViewById(R.id.botonRegistrarseRegistro);
         Bundle bundle=intent.getExtras();
 
+        // al pulsar el registrarse, no crea y añade un usuario
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // Comprobamos que los campos de contraseña coincidan
                if(passRegistro.getText().toString().equals(passRepiteRegistro.getText().toString())){
-
                    crearUsuario();
                    Toast.makeText(getApplicationContext(), "Usuario creado correctamente", Toast.LENGTH_SHORT).show();
-
                    Intent nuevoIntent= new Intent(RegistroActivity.this,LoginActivity.class);
                    startActivity(nuevoIntent);
-
-
                }else{
-
                    Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-
                }
 
             }
         });
 
+        // para que al pulsar fuera del teclado, este desaparezca
         ArrayList<EditText> textos=new ArrayList<>();
         textos.add(nombreRegistro);
         textos.add(userRegistro);
@@ -102,6 +99,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
+    // Funcion para crear un usuario
     public void crearUsuario(){
 
         //Creamos el usuario. Para ello primero creamos la direccion

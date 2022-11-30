@@ -33,12 +33,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    // metodos de la clase
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        // Creamos un nuevo almacen
         Almacen almacen = new Almacen();
 
         botonLogin = findViewById(R.id.botonLogin);
@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // En caso de que las credenciales las encontremos, mandamos a la vista activity_principal
                 if (Almacen.comprobarCredencialesLogin(textoUser.getText().toString(),
                         textoPassword.getText().toString()) != null) {
                     User s = Almacen.comprobarCredencialesLogin(textoUser.getText().toString(),
@@ -63,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
+                // En caso contrario, avisamos con un Toast
                 } else {
                     Toast.makeText(getApplicationContext(), "Registrese si no lo ha hecho", Toast.LENGTH_SHORT).show();
                 }
@@ -70,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Al pulsar el boton Registro te redirige el registro para crear un nuevo usuario
-
         botonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Para que al pulsar fuera del teclado, este desaparezca
         ArrayList<EditText> textos=new ArrayList<>();
         textos.add(textoUser);
         textos.add(textoPassword);

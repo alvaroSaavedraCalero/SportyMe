@@ -183,4 +183,19 @@ public class Almacen implements Serializable {
         }
         return item;
     }
+
+    public static boolean pedicoContieneItem(ItemPedido item) {
+        boolean retorno = false, continuar = true;
+        int i = 0;
+
+        while (i < Pedido.getItemsPedido().size() && continuar) {
+            if (Pedido.getItemsPedido().get(i).getProductoPedido().getNombreProducto().equals(item.getProductoPedido().getNombreProducto())) {
+                retorno = true;
+                continuar = false;
+            } else {
+                i++;
+            }
+        }
+        return retorno;
+    }
 }

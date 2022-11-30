@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class ContactoActivity extends AppCompatActivity {
 
+    // Atributos de la clase
     private Button botonAtras;
 
     @Override
@@ -16,6 +17,7 @@ public class ContactoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacto);
 
+        // Si hacemos click en el boton atras, nos lleva a la vista activity_principal
         botonAtras = (Button) findViewById(R.id.botonAtrasContacto);
         botonAtras.setOnClickListener(new View.OnClickListener() {
             @Override

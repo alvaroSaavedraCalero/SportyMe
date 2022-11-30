@@ -1,7 +1,9 @@
 package models;
 
+
+
 import java.io.Serializable;
-import java.util.ArrayList;
+
 
 public class Producto implements Serializable {
 
@@ -81,4 +83,6 @@ public class Producto implements Serializable {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+
+
 }
