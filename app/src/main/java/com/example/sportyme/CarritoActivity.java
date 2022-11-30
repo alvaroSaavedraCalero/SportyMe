@@ -68,7 +68,7 @@ public class CarritoActivity extends AppCompatActivity {
 
 
 
-        for (ItemPedido i : p.getItemsPedido()) {
+        for (ItemPedido i : Pedido.getItemsPedido()) {
             TableRow fila = new TableRow(tabla.getContext());
             fila.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -81,6 +81,12 @@ public class CarritoActivity extends AppCompatActivity {
             nombre.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
             nombre.setText(i.getProductoPedido().getNombreProducto());
 
+            TextView talla = new TextView(fila.getContext());
+            talla.setGravity(TextView.TEXT_ALIGNMENT_GRAVITY);
+            talla.setPadding(10, 0, 10, 0);
+            talla.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.yellow));
+            String tallaString = "Talla " + i.getProductoPedido().getTallaEscogida();
+            talla.setText(tallaString);
 
             TextView cantidad = new TextView(fila.getContext());
             cantidad.setGravity(TextView.TEXT_ALIGNMENT_CENTER);
@@ -91,6 +97,7 @@ public class CarritoActivity extends AppCompatActivity {
 
             fila.addView(imagen);
             fila.addView(nombre);
+            fila.addView(talla);
             fila.addView(cantidad);
 
             tabla.addView(fila);

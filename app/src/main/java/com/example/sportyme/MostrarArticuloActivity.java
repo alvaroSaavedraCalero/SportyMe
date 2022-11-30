@@ -27,7 +27,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
     private Producto productoActual;
 
     private ImageView foto;
-    private TextView descripción;
+    private TextView descripcion;
     private Button disminuir;
     private Button aumentar;
     private TextView cantidad;
@@ -59,7 +59,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Estas eligiendo el articulo " + idPicture, Toast.LENGTH_SHORT).show();
 
         foto = (ImageView) findViewById(R.id.imagenMostrarArticulo);
-        descripción = (TextView) findViewById(R.id.descripcionMostrarArticulo);
+        descripcion = (TextView) findViewById(R.id.descripcionMostrarArticulo);
         disminuir = (Button) findViewById(R.id.botonQuitarMostrarArticulo);
         aumentar = (Button) findViewById(R.id.botonAniadirMostrarArticulo);
         cantidad = (TextView) findViewById(R.id.cantidadMostrarArticulo);
@@ -72,7 +72,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         productoActual = Almacen.recuperarProducto(idPicture);
 
         foto.setImageResource(devuelveDrawableFoto(idPicture));
-        descripción.setText(productoActual.getDescripcion());
+        descripcion.setText(productoActual.getDescripcion());
 
         productoActual.setTallaEscogida((String) tallaje.getSelectedItem());
 
@@ -114,34 +114,41 @@ public class MostrarArticuloActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 int cantidadActual = Integer.parseInt(cantidad.getText().toString());
-                Pedido pedidoActual=new Pedido(s.getUsername());
-                s.setPedidoActual(pedidoActual);
-                Log.i("tamaño itemPedido",String.valueOf(s.getPedidoActual().getItemsPedido().size()));
-                if(s.getPedidoActual().getItemsPedido().size()==0){
+                if (cantidadActual == 0) {
+                    Toast.makeText(MostrarArticuloActivity.this, "No se pueden añadir 0 productos al carrito",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Pedido pedidoActual=new Pedido(s.getUsername());
+                    s.setPedidoActual(pedidoActual);
+                    Log.i("tamaño itemPedido",String.valueOf(Pedido.getItemsPedido().size()));
+                    if(Pedido.getItemsPedido().size()==0){
 
-
-                    ItemPedido nuevoItem=new ItemPedido(productoActual,cantidadActual);
-                    s.getPedidoActual().getItemsPedido().add(nuevoItem);
-
-                    Log.i("añado a carrito vacio",s.getPedidoActual().getItemsPedido().get(0).getProductoPedido().getNombreProducto());
-                    Log.i("tamaño itemPedido",String.valueOf(s.getPedidoActual().getItemsPedido().size()));
-                }
-                else{
-
-                    if(s.getPedidoActual().getItemsPedido().contains(productoActual)){
-
-                        productoActual.setCantidad(productoActual.getCantidad()+1);
-
-                    }else{
 
                         ItemPedido nuevoItem=new ItemPedido(productoActual,cantidadActual);
-                        s.getPedidoActual().getItemsPedido().add(nuevoItem);
+                        nuevoItem.getProductoPedido().setTallaEscogida(tallaje.getSelectedItem().toString());
+                        Pedido.getItemsPedido().add(nuevoItem);
+
+                        Log.i("añado a carrito vacio", Pedido.getItemsPedido().get(0).getProductoPedido().getNombreProducto());
+                        Log.i("tamaño itemPedido",String.valueOf(Pedido.getItemsPedido().size()));
+                    }
+                    else{
+
+                        if(Pedido.getItemsPedido().contains(productoActual)){
+
+                            productoActual.setCantidad(productoActual.getCantidad()+1);
+
+                        }else{
+
+                            ItemPedido nuevoItem=new ItemPedido(productoActual,cantidadActual);
+                            nuevoItem.getProductoPedido().setTallaEscogida(tallaje.getSelectedItem().toString());
+                            Pedido.getItemsPedido().add(nuevoItem);
+
+                        }
 
                     }
 
+                    Toast.makeText(getApplicationContext(), "Se han añadido " + cantidadActual + " items de este producto al carrito", Toast.LENGTH_SHORT).show();
                 }
-
-                Toast.makeText(getApplicationContext(), "Se han añadido " + cantidadActual + " items de este producto al carrito", Toast.LENGTH_SHORT).show();
             }
         });
 
