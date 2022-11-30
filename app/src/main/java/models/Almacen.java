@@ -1,5 +1,7 @@
 package models;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -166,8 +168,11 @@ public class Almacen implements Serializable {
             if (i < almacenUsuarios.size()) {
                 while (j < almacenUsuarios.get(i).getPedidoActual().getItemsPedido().size() && continuar) {
                     if (almacenUsuarios.get(i).getPedidoActual().getItemsPedido().get(j).getProductoPedido().getIdFoto().equals(idFoto)) {
+
+                        Log.i("buscando item en itemPedido","El método busca");
                         item = almacenUsuarios.get(i).getPedidoActual().getItemsPedido().get(j);
-                        continuar = false;
+                        //continuar = false;
+                        return item;
                     } else {
                         j++;
                     }

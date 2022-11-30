@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -33,6 +34,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
     private Spinner tallaje;
     private Button aniadirCarrito;
     private TextView precio;
+    private Button volver;
     String idPicture;
 
 
@@ -64,6 +66,7 @@ public class MostrarArticuloActivity extends AppCompatActivity {
         tallaje = (Spinner) findViewById(R.id.Tallaje);
         aniadirCarrito = (Button) findViewById(R.id.botonAniadirCarrito);
         precio = (TextView) findViewById(R.id.textoPrecio);
+        volver=(Button) findViewById(R.id.volverMenu);
 
 
         productoActual = Almacen.recuperarProducto(idPicture);
@@ -87,6 +90,15 @@ public class MostrarArticuloActivity extends AppCompatActivity {
             }
         });
 
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intenVolver= new Intent(MostrarArticuloActivity.this,PrincipalActivity.class);
+                intenVolver.putExtra("usuario",s);
+                startActivity(intenVolver);
+            }
+        });
+
         aumentar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,21 +114,31 @@ public class MostrarArticuloActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 int cantidadActual = Integer.parseInt(cantidad.getText().toString());
-                Pedido pedido = Almacen.buscarPedido(s.getUsername());
-                // Si no hay items en el pedio, lo añadimos
-                if (pedido.getItemsPedido().size() == 0) {
+                Pedido pedidoActual=new Pedido(s.getUsername());
+                s.setPedidoActual(pedidoActual);
+                Log.i("tamaño itemPedido",String.valueOf(s.getPedidoActual().getItemsPedido().size()));
+                if(s.getPedidoActual().getItemsPedido().size()==0){
 
-                    ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
-                    pedido.getItemsPedido().add(item);
-                    // Si hay items en el pedido, buscamos el item y modificamos la cantidad
-                } else {
-                    if (Almacen.buscarItem(idPicture) != null) {
-                        Almacen.buscarItem(idPicture).setCantidadPedido(cantidadActual);
-                        // Si no existe ese item en el pedido, lo añadimos
-                    } else {
-                        ItemPedido item = new ItemPedido(Almacen.recuperarProducto(idPicture), cantidadActual);
-                        pedido.getItemsPedido().add(item);
+
+                    ItemPedido nuevoItem=new ItemPedido(productoActual,cantidadActual);
+                    s.getPedidoActual().getItemsPedido().add(nuevoItem);
+
+                    Log.i("añado a carrito vacio",s.getPedidoActual().getItemsPedido().get(0).getProductoPedido().getNombreProducto());
+                    Log.i("tamaño itemPedido",String.valueOf(s.getPedidoActual().getItemsPedido().size()));
+                }
+                else{
+
+                    if(s.getPedidoActual().getItemsPedido().contains(productoActual)){
+
+                        productoActual.setCantidad(productoActual.getCantidad()+1);
+
+                    }else{
+
+                        ItemPedido nuevoItem=new ItemPedido(productoActual,cantidadActual);
+                        s.getPedidoActual().getItemsPedido().add(nuevoItem);
+
                     }
+
                 }
 
                 Toast.makeText(getApplicationContext(), "Se han añadido " + cantidadActual + " items de este producto al carrito", Toast.LENGTH_SHORT).show();

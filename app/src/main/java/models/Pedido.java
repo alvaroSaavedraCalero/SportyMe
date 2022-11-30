@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Pedido implements Serializable {
 
-    private ArrayList<ItemPedido> itemsPedido = new ArrayList<>();
+    private static ArrayList<ItemPedido> itemsPedido=new ArrayList<>();
     private String usuario;
     private double subtotal;
     private double gastosDeEnvio = 0;
@@ -19,12 +19,12 @@ public class Pedido implements Serializable {
 
     }
 
-    public ArrayList<ItemPedido> getItemsPedido() {
+    public static ArrayList<ItemPedido> getItemsPedido() {
         return itemsPedido;
     }
 
-    public void setItemsPedido(ArrayList<ItemPedido> itemsPedido) {
-        this.itemsPedido = itemsPedido;
+    public static void setItemsPedido(ArrayList<ItemPedido> itemsPedido) {
+        Pedido.itemsPedido = itemsPedido;
     }
 
     public double getSubtotal() {
@@ -55,12 +55,6 @@ public class Pedido implements Serializable {
     public void setGastosDeEnvio(double gastosDeEnvio) {
         this.gastosDeEnvio = gastosDeEnvio;
     }
-
-
-
-
-
-
 
 
     public double calcularSubTotal() {

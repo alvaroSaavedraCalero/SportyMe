@@ -8,8 +8,8 @@
     android:textAlignment="center"
     tools:context=".CarritoActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <TableLayout
+        android:id="@+id/TableLayout"
         android:layout_width="413dp"
         android:layout_height="470dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/TableLayout"
         app:layout_constraintVertical_bias="0.758" />
 
     <TextView
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/TableLayout"
         app:layout_constraintVertical_bias="0.766" />
 
     <TextView
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.248"
         app:layout_constraintStart_toEndOf="@+id/textoSubtotal"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/TableLayout"
         app:layout_constraintVertical_bias="0.766" />
 
     <TextView
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.623"
         app:layout_constraintStart_toEndOf="@+id/textoGastosEnvio"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/TableLayout"
         app:layout_constraintVertical_bias="0.766" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

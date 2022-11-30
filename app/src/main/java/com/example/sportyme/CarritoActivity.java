@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +30,7 @@ public class CarritoActivity extends AppCompatActivity {
     private Pedido p;
     private Intent intent;
 
-    private ScrollView scrollView;
+    private TableLayout tabla;
     private Button botonRealizarCompra;
     private TextView subtotal;
     private TextView gastosEnvio;
@@ -44,7 +46,7 @@ public class CarritoActivity extends AppCompatActivity {
 
         User s = (User) intent.getSerializableExtra("usuario");
 
-        scrollView = (ScrollView) findViewById(R.id.scrollView2);
+        tabla = (TableLayout) findViewById(R.id.TableLayout);
         botonRealizarCompra = (Button) findViewById(R.id.botonRealizarCompraCarrito);
 
         subtotal = (TextView) findViewById(R.id.textoSubtotal);
@@ -64,7 +66,7 @@ public class CarritoActivity extends AppCompatActivity {
 
 
         for (ItemPedido i : p.getItemsPedido()) {
-            LinearLayout fila = new LinearLayout(scrollView.getContext());
+            TableRow fila = new TableRow(tabla.getContext());
             fila.setOrientation(LinearLayout.HORIZONTAL);
 
             ImageView imagen = new ImageView(fila.getContext());
@@ -88,7 +90,7 @@ public class CarritoActivity extends AppCompatActivity {
             fila.addView(nombre);
             fila.addView(cantidad);
 
-            scrollView.addView(fila);
+            tabla.addView(fila);
 
         }
 
