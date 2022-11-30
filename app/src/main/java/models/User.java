@@ -66,7 +66,10 @@ public class User implements Serializable {
 
     public void setCorreo(String correo) { this.correo = correo; }
 
-    public Direccion getDireccionEnvio() { return direccionEnvio; }
+    public Direccion getDireccionEnvio() {
+
+        Direccion nuevaDireccion=new Direccion(this.direccionEnvio.getCalle(),this.direccionEnvio.getCP(),this.direccionEnvio.getProvincia(),this.direccionEnvio.getLocalidad());
+        return nuevaDireccion; }
 
     public void setDireccionEnvio(Direccion direccionEnvio) { this.direccionEnvio =
             new Direccion(direccionEnvio.getCalle(), direccionEnvio.getCP(), direccionEnvio.getProvincia(),

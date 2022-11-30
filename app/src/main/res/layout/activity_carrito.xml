@@ -28,9 +28,10 @@
         android:text="@string/botonRealizarCompra"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TableLayout"
-        app:layout_constraintVertical_bias="0.758" />
+        app:layout_constraintVertical_bias="0.718" />
 
     <TextView
         android:id="@+id/textoSubtotal"
@@ -70,5 +71,17 @@
         app:layout_constraintStart_toEndOf="@+id/textoGastosEnvio"
         app:layout_constraintTop_toBottomOf="@+id/TableLayout"
         app:layout_constraintVertical_bias="0.766" />
+
+    <Button
+        android:id="@+id/btnSeguir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seguir Comprando"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toEndOf="@+id/botonRealizarCompraCarrito"
+        app:layout_constraintTop_toBottomOf="@+id/textoTotal"
+        app:layout_constraintVertical_bias="0.367" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

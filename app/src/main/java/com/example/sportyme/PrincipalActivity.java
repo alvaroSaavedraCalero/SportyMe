@@ -145,6 +145,7 @@ public class PrincipalActivity extends AppCompatActivity {
                 user.setUsername(s.getUsername());
                 intent = new Intent(getApplicationContext(), CarritoActivity.class);
                 intent.putExtra("usuario", user);
+                intent.putExtra("almacen",almacen);
                 Log.i("vista principal valor usuario", user.getUsername());
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

@@ -45,6 +45,9 @@ public class CarritoActivity extends AppCompatActivity {
         intent = getIntent();
 
         User s = (User) intent.getSerializableExtra("usuario");
+        Almacen almacen=(Almacen)intent.getSerializableExtra("almacen");
+
+        botonAtras=(Button)findViewById(R.id.btnSeguir);
 
         tabla = (TableLayout) findViewById(R.id.TableLayout);
         botonRealizarCompra = (Button) findViewById(R.id.botonRealizarCompraCarrito);
@@ -94,11 +97,27 @@ public class CarritoActivity extends AppCompatActivity {
 
         }
 
-        botonRealizarCompra = (Button) findViewById(R.id.botonRealizarCompraCarrito);
+
         botonRealizarCompra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "La compra ha sido realizada", Toast.LENGTH_SHORT).show();
+
+                Intent finCompra=new Intent(CarritoActivity.this,FinalCompra.class);
+                finCompra.putExtra("usuario",s);
+                finCompra.putExtra("almacen",almacen);
+                startActivity(finCompra);
+            }
+        });
+
+        botonAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent volverComprar=new Intent(CarritoActivity.this,PrincipalActivity.class);
+                volverComprar.putExtra("usuario",s);
+                volverComprar.putExtra("almacen",almacen);
+                startActivity(volverComprar);
+
             }
         });
 
